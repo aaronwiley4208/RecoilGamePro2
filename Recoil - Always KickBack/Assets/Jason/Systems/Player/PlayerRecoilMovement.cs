@@ -9,6 +9,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerRecoilMovement : MonoBehaviour {
 
+    [SerializeField]
+    private float gravityMultiplier = 1;
+
     [Header("Gun Properties")]
     [SerializeField]
     [Tooltip("A visual representation of the gun object, moved by player's mouse")]
@@ -50,9 +53,9 @@ public class PlayerRecoilMovement : MonoBehaviour {
         }
     }
 
-    // Do physics stuff with inputs
+    // Do physics stuff 
     void FixedUpdate() {
-        // If user clicks, send an impulse force 
-        
+        // Apply gravity
+        rigidbody.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
     }
 }
