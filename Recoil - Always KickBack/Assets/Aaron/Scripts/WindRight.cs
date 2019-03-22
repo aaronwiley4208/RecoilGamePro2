@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class WindRight : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public float windSpeed = 10f;
 
-	void OnCollisionEnter(Collision col){
-		
+	void OnTriggerStay(Collider col){
+		if(col.tag == "Player"){
+            col.GetComponent<Rigidbody>().AddForce(Vector3.right * windSpeed, ForceMode.Force);
+            //print("We in");
+		}
 	}
 }
