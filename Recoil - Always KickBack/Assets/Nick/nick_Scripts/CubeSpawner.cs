@@ -23,14 +23,14 @@ public class CubeSpawner : MonoBehaviour {
             GameObject temp = ObjectPooler.Instance.GetObjectFromPool();
             temp.SetActive(true);
             temp.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), Random.Range(-50, 50));
-
+            
             StartCoroutine(DestroyCube(temp));
         }
     }
 
     private IEnumerator DestroyCube(GameObject _temp)
     {
-        yield return new WaitForSeconds(Random.Range(1, 10));
+        yield return new WaitForSeconds(3);
         ObjectPooler.Instance.ReturnObjectToPool(_temp);
     }
 }
