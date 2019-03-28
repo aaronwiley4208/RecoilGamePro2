@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkerFSM : MonoBehaviour {
+public class FSMscript : MonoBehaviour {
 
     public enum Transition
     {
@@ -55,9 +55,9 @@ public class WalkerFSM : MonoBehaviour {
 
         public virtual void DoBeforeLeaving() { }
 
-        public abstract void Reason(GameObject player, GameObject NPC);
+        public abstract void Reason(GameObject player, GameObject npc);
 
-        public abstract void Act(GameObject player, GameObject NPC);
+        public abstract void Act(GameObject player, GameObject npc);
     }
 
     public class FSMsystem
@@ -129,11 +129,6 @@ public class WalkerFSM : MonoBehaviour {
                 }
             }
         }
-
-
-
-
-
     }
 
 
