@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CliffBig01_Mat
-  m_Shader: {fileID: 4800000, guid: 334962709511cd04e83c9de5f7e6bec8, type: 3}
+  m_Shader: {fileID: 4800000, guid: 543a72c43ae674441b36c43b80402166, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _USE_DECAL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,8 +18,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo02:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo03:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 65b31c2bc8cf7bc4e9d09773ec9e1eab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CityLightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Decal:
@@ -86,8 +106,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MRHAO01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MRHAO02:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MRHAO03:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c1db9d9d57601ac4a930c0af00135b10, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e25b9cf4815a9c44944187e979c1ac6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalGloss:
@@ -102,8 +138,36 @@ Material:
         m_Texture: {fileID: 2800000, guid: 51ada4ba6b76219459e358a510c009dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicSmooth:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Noise:
         m_Texture: {fileID: 2800000, guid: c7dedb70429f43140ba75af5be75c77e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal02:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal02Detail:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal03:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -115,6 +179,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ripple:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -146,9 +214,21 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaterRoughness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AtmosphereDensity: 0
     - _BlendHeight: 0
     - _BumpScale: 1
+    - _CityLightIntensity: 0
+    - _CloudMapSpecularity: 0
+    - _CloudPanSpeed: 0
     - _Cutoff: 0.5
     - _DecalFalloff: 0
     - _DecalMaskScale: 0.15
@@ -157,19 +237,34 @@ Material:
     - _DetailNormalMapScale: 1
     - _DetailScale: 14.07
     - _DstBlend: 0
+    - _Falloff01: 0.2
+    - _Falloff02: 0.2
+    - _Falloff03: 0.2
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
+    - _HeightmapIntensity: 5
+    - _LightStretch: 0
     - _Metallic: 1
     - _Mode: 0
     - _NoiseAmount: 1
     - _NoiseFallOff: 0.17
+    - _NoiseScale: 1
     - _NoiseStrength: 0.5
+    - _NormalMapIntensity: 1
+    - _NormalScale: 1
+    - _OcclusionScale: 1
     - _OcclusionStrength: 0.603
     - _Parallax: 0.02
+    - _ParallaxStrength: 0.05
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularMapIntensity: 0.4
     - _SrcBlend: 1
+    - _TextureScale01: 1
+    - _TextureScale02: 1
+    - _TextureScale03: 1
     - _TopGlossiness: 1
     - _TopMetallic: 1
     - _TopNormal2Scale: 1
@@ -177,11 +272,19 @@ Material:
     - _UVSec: 0
     - _Use_Decal: 1
     - _Use_DecalMask: 0
+    - _WaterEdge: 0.2
     - _ZWrite: 1
     - _noiseScale: 1
     - _normal2Scale: 2
     - _waterLevel: 0.5
     m_Colors:
+    - _AtmosphereColor: {r: 0.4411765, g: 0.6300204, b: 1, a: 1}
+    - _CityLightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseAmount: {r: 0, g: 0, b: 0, a: 0}
+    - _TextureColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    - _WaterColor: {r: 1, g: 1, b: 1, a: 1}
