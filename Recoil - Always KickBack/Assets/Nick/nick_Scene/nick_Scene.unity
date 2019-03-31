@@ -926,9 +926,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755662372}
+  - component: {fileID: 755662373}
   m_Layer: 0
   m_Name: Enemies
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -949,12 +950,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &755662373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755662371}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdf14a3a3b42654898e6cb6bc615065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubePrefab: {fileID: 1442219393226452, guid: 2e60ab307c6ccd24abca718ae4e3fd70, type: 2}
+  spawnTimer: 5
+  size: 10
 --- !u!43 &759320204
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-215818
+  m_Name: pb_Mesh15250
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1120,7 +1135,7 @@ GameObject:
   - component: {fileID: 786207538}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1138,11 +1153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 924351643}
   range: 20
-  bulletImpulse: 20
-  cubePrefab: {fileID: 0}
-  size: 0
-  projectile: {fileID: 54155541246890258, guid: 2e60ab307c6ccd24abca718ae4e3fd70,
-    type: 2}
+  bulletImpulse: 10
+  cubePrefab: {fileID: 1896494084198562, guid: 9c6511d7055e1e1408b5b6583ad10641, type: 2}
+  size: 10
 --- !u!195 &786207539
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1452,7 +1465,7 @@ GameObject:
   - component: {fileID: 958589779}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,7 +1504,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 72
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &958589775
 BoxCollider:
@@ -1573,11 +1586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 924351643}
   range: 20
-  bulletImpulse: 20
-  cubePrefab: {fileID: 0}
-  size: 0
-  projectile: {fileID: 54155541246890258, guid: 2e60ab307c6ccd24abca718ae4e3fd70,
-    type: 2}
+  bulletImpulse: 10
+  cubePrefab: {fileID: 1896494084198562, guid: 9c6511d7055e1e1408b5b6583ad10641, type: 2}
+  size: 10
 --- !u!1 &1569679017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,7 +2368,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-227666
+  m_Name: pb_Mesh15264
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2910,7 +2921,7 @@ GameObject:
   - component: {fileID: 1681443034}
   m_Layer: 0
   m_Name: Enemy (2)
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2941,11 +2952,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 924351643}
   range: 20
-  bulletImpulse: 20
-  cubePrefab: {fileID: 0}
-  size: 0
-  projectile: {fileID: 54155541246890258, guid: 2e60ab307c6ccd24abca718ae4e3fd70,
-    type: 2}
+  bulletImpulse: 10
+  cubePrefab: {fileID: 1896494084198562, guid: 9c6511d7055e1e1408b5b6583ad10641, type: 2}
+  size: 10
 --- !u!195 &1681443035
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3192,7 +3201,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-231670
+  m_Name: pb_Mesh15280
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
