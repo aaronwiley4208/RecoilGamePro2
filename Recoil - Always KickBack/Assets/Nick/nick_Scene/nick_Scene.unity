@@ -927,7 +927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755662372}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,8 +943,8 @@ Transform:
   m_LocalPosition: {x: 12.424753, y: 0.4197712, z: 6.864373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 786207544}
   - {fileID: 958589778}
+  - {fileID: 786207544}
   - {fileID: 1681443033}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1244,7 +1244,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 755662372}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &849649116
 Prefab:
@@ -1558,7 +1558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 755662372}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &958589779
 MonoBehaviour:
