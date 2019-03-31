@@ -8,6 +8,12 @@ using UnityEngine;
 public class GunBarrel : MonoBehaviour {
     public GameObject bulletPrefab;
     public float bulletForce;
+    [Tooltip("The angle of the spread, centered at the clicking direction.")]
+    [Range(0, 90)]
+    public float spreadAngle;
+    [Tooltip("The number of bullets in the spread.")]
+    public int bulletsPerClick;
+
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +30,13 @@ public class GunBarrel : MonoBehaviour {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             Vector3 mouseToPlayer = (mousePos - transform.position).normalized;
 
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(mouseToPlayer));
-            Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
-            bulletRB.AddForce(mouseToPlayer * bulletForce, ForceMode.Impulse);
+            Fire(mouseToPlayer);
         }
 	}
+
+    private void Fire(Vector3 direction) {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(direction));
+        Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+        bulletRB.AddForce(direction * bulletForce, ForceMode.Impulse);
+    }
 }
