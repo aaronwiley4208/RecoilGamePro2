@@ -36,26 +36,31 @@ public class PlayerRecoilMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // Calculate where the gun should be based on the mouse position relative to the player.
-        Vector3 mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = transform.position.z - Camera.main.transform.position.z;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        //Vector3 mouseScreenPos = Input.mousePosition;
+        //mouseScreenPos.z = transform.position.z - Camera.main.transform.position.z;
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 
-        // Only let it go a certain distance from the player
-        Vector3 playerToMouse = transform.position - mousePos;
-        gunObj.position = transform.position - (playerToMouse.normalized * gunToPlayerDistance);
+        //// Only let it go a certain distance from the player
+        //Vector3 playerToMouse = transform.position - mousePos;
+        //gunObj.position = transform.position - (playerToMouse.normalized * gunToPlayerDistance);
 
         // If user clicks, send an impulse force
-        if (Input.GetMouseButtonDown(0)) {
-            // Calc the direction.
-            Vector3 gunToPlayer = (transform.position - gunObj.position).normalized;
-            rigidbody.AddForce(gunToPlayer * recoilForce, ForceMode.Impulse);
-            numClicks++;
-        }
+        //if (Input.GetMouseButtonDown(0)) {
+        //    // Calc the direction.
+        //    Vector3 gunToPlayer = (transform.position - gunObj.position).normalized;
+        //    rigidbody.AddForce(gunToPlayer * recoilForce, ForceMode.Impulse);
+        //    numClicks++;
+        //}
     }
 
     // Do physics stuff 
     void FixedUpdate() {
         // Apply gravity
         rigidbody.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
+    }
+
+    public void Recoil(float force, Vector3 direction) {
+        rigidbody.AddForce(direction * force, ForceMode.Impulse);
+        numClicks++;
     }
 }
