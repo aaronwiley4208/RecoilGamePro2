@@ -10,8 +10,6 @@ public class ChargerAI : MonoBehaviour {
     public GameObject rightObj;
     public Transform rightPoint;
 
-    public int[,] transitions = new int[8, 2];
-
     public int currentState = 0;
     public int nextState = 0;
 
@@ -20,6 +18,23 @@ public class ChargerAI : MonoBehaviour {
 
     //range above/below patrol zone where enemy can still function
     public int yBound = 3;
+
+    public float lungeForce = 80;
+    public float attackCooldown = 5;
+    private float canNextAttack = 0;
+    private Vector3 toPlayer;
+
+    public float gravMult = 15;
+
+    public bool isMovingLeft = true;
+    private Vector3 moveVector;
+    //patrolLeniency is a bit of give for patrolling, due to the jerkiness of movement
+    public float patrolLeniency = 1;
+    public float moveForce = 40;
+    //urgency is a modifier to make the enemy return faster
+    public float urgency = 1.2f;
+    public float moveCooldown = 3;
+    private float canNextMove = 0;
 
     public enum States
     {
@@ -33,48 +48,13 @@ public class ChargerAI : MonoBehaviour {
 	void Start () {
         leftPoint = leftObj.transform;
         rightPoint = rightObj.transform;
-
-        //transitions array represents valid state transitions
-        // x,0 is the source state for a given transition, x,1 is the destination state
-
-        //patrolling>attacking, enemy has seen player
-        transitions[0, 0] = (int)States.PATROLLING;
-        transitions[0, 1] = (int)States.ATTACKING;
-
-        //attacking>patrolling, enemy loses player while inside patrol zone
-        transitions[1, 0] = (int)States.ATTACKING;
-        transitions[1, 1] = (int)States.PATROLLING;
-
-        //attacking>returning, enemy loses player outside patrol zone, within y bounds
-        transitions[2, 0] = (int)States.ATTACKING;
-        transitions[2, 1] = (int)States.RETURNING;
-
-        //attacking>lost, enemy loses player outside patrol zone, outside y bounds
-        transitions[3, 0] = (int)States.ATTACKING;
-        transitions[3, 1] = (int)States.LOST;
-
-        //returning>patrolling, enemy returns to patrol zone after losing player
-        transitions[4, 0] = (int)States.RETURNING;
-        transitions[4, 1] = (int)States.PATROLLING;
-
-        //returning>lost, enemy leaves y bounds while returning
-        transitions[5, 0] = (int)States.RETURNING;
-        transitions[5, 1] = (int)States.LOST;
-
-        //returning>attacking, enemy was returning but has resighted the player
-        transitions[6, 0] = (int)States.RETURNING;
-        transitions[6, 1] = (int)States.ATTACKING;
-
-        //lost>attacking, enemy was lost but has resighted the player
-        transitions[7, 0] = (int)States.LOST;
-        transitions[7, 1] = (int)States.ATTACKING;
     }
 	
 	// Update is called once per frame
 	void Update () {
 		switch (currentState)
         {
-            case (int)States.PATROLLING:
+            case (int)States.PATROLLING:  //completed
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
@@ -82,11 +62,44 @@ public class ChargerAI : MonoBehaviour {
                 }
                 else
                 {
-                    //given current direction, move towards end point; once within range of end point, swap direction
-                    //do patrol code
+                    //return code below
+
+                    //move cooldown check
+                    if (Time.time >= canNextMove)
+                    {
+                        canNextMove = Time.time + moveCooldown;
+
+                        //when moving left
+                        if (isMovingLeft)
+                        {
+                            moveVector = this.transform.position;
+                            moveVector.x -= 1;
+                            moveVector.y += .2f;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
+                            //if reaching the leftmost edge of the patrol route
+                            if (this.transform.position.x <= leftPoint.position.x + patrolLeniency)
+                            {
+                                isMovingLeft = false;
+                            }
+                        }
+                        else  //if moving right
+                        {
+                            moveVector = this.transform.position;
+                            moveVector.x += 1;
+                            moveVector.y += .2f;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
+                            //if reaching the leftmost edge of the patrol route
+                            if (this.transform.position.x >= leftPoint.position.x - patrolLeniency)
+                            {
+                                isMovingLeft = true;
+                            }
+                        }
+                    }
                 }
                 break;
-            case (int)States.ATTACKING:
+            case (int)States.ATTACKING:  //completed
                 //if player not in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) > 10)
                 {
@@ -104,7 +117,7 @@ public class ChargerAI : MonoBehaviour {
                             nextState = (int)States.LOST;
                         }
                     }
-                    else  //not returning to patrolling
+                    else  //not changing directly to patrolling
                     {
                         //if within y bounds, return
                         if (this.transform.position.y < leftPoint.position.y + yBound && this.transform.position.y > leftPoint.position.y - yBound)
@@ -119,11 +132,20 @@ public class ChargerAI : MonoBehaviour {
                 }
                 else  //else, execute attack code
                 {
-                    //every so often, impulse at player
-                    //do attack code
+                    //can enemy currently attack?
+                    if (Time.time > canNextAttack)
+                    {
+                        //set next viable attack time, spaghetti style
+                        canNextAttack = Time.time + attackCooldown;
+
+                        //what?  me?  ripping this from jason's gun script?  whaaaaat?  noooo, definitely not
+                        toPlayer = (transform.position - player.transform.position).normalized;
+                        this.GetComponent<Rigidbody>().AddForce(toPlayer * lungeForce, ForceMode.Impulse);
+                    }
+                    
                 }
                 break;
-            case (int)States.RETURNING:
+            case (int)States.RETURNING:  //completed
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
@@ -149,11 +171,41 @@ public class ChargerAI : MonoBehaviour {
                 }
                 else
                 {
-                    //if too far left, go right; else go left
-                    //do return code
-                }
+                    //return code below
+
+                    //move cooldown check
+                    if (Time.time >= canNextMove)
+                    {
+                        canNextMove = Time.time + moveCooldown;
+
+                        if (this.transform.position.x <= leftPoint.position.x)
+                        {
+                            isMovingLeft = false;
+                            //arbitrary movement vector
+                            moveVector = this.transform.position;
+                            moveVector.x += 1;
+                            moveVector.y += .2f;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce * urgency, ForceMode.Impulse);
+                        } else if (this.transform.position.x >= rightPoint.position.x)
+                        {
+                            isMovingLeft = true;
+                            //arbitrary movement vector
+                            moveVector = this.transform.position;
+                            moveVector.x -= 1;
+                            moveVector.y += .2f;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce * urgency, ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            nextState = (int)States.LOST;
+                            print("BAD RETURN CHECK HELP ME");
+                        }
+                    }
+                }   
                 break;
-            case (int)States.LOST:
+            case (int)States.LOST:  //complete?
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
@@ -163,6 +215,7 @@ public class ChargerAI : MonoBehaviour {
                 {
                     //cower
                     //do lost code
+                    //thinking there just isn't lost code.  maybe some fluff, but nothing important
                 }
                 break;
         }
@@ -170,6 +223,13 @@ public class ChargerAI : MonoBehaviour {
 
     private void LateUpdate()
     {
+        //change state after update concludes
         currentState = nextState;
+    }
+
+    private void FixedUpdate()
+    {
+        //pfft, no, never would i EVER rip code off'a jason's PlayerRecoilMovement scrip. pft
+        this.GetComponent<Rigidbody>().AddForce(Physics.gravity * gravMult, ForceMode.Acceleration);
     }
 }
