@@ -6,9 +6,10 @@ public class PlayerHealth : MonoBehaviour {
 
     public float HP = 3;
     public ParticleSystem deathExpl;
+    public ParticleSystem barrierEffect;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,7 +17,7 @@ public class PlayerHealth : MonoBehaviour {
 	void Update () {
         if (HP <= 0) {
             print("D E A D T");
-            deathExpl.enableEmission = true;
+            deathExpl.Emit(1);
         }
 	}
 
