@@ -3,37 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class newShoot : MonoBehaviour
-{
-    //vars to shoot
-    public Transform player;
+{    
     public float range = 50.0f;
     public float bulletImpulse = 10.0f;
+    private Transform player;
     private bool onRange = false;
 
-    //object pool
-    public GameObject cubePrefab;
-    public ObjectPooler ObjectPooler;
-    public int size;
-    
+    private void Awake()
+    {
+         player = GameObject.FindWithTag("Player").transform;
+    }
     void Start()
     {
         float rand = Random.Range(1.0f, 2.0f);
-        InvokeRepeating("Shoot", 2, rand);
-        ObjectPooler = new ObjectPooler(cubePrefab, size);
+        InvokeRepeating("Shoot", 2, rand);       
     }
 
     void Shoot()
     {
         if (onRange)
-        {   
-            //initialzing and resetting object from pool
-            GameObject temp = ObjectPooler.Instance.GetObjectFromPool();
-            temp.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-            //set active and send towards player
-            temp.SetActive(true);
+        {            
+            GameObject temp = ObjectPool.SharedInstance.GetPooledObject();
             temp.transform.position = transform.position;
-            temp.transform.GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);  
+            temp.transform.rotation = transform.rotation;
+            temp.SetActive(true);
+            temp.transform.GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);
         }
     }
 
@@ -41,5 +35,5 @@ public class newShoot : MonoBehaviour
     {
         //boolean to check if player is within attack range
         onRange = Vector3.Distance(transform.position, player.position) < range;
-    }    
+    }
 }

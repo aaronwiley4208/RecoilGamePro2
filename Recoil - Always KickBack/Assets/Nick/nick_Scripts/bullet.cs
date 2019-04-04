@@ -3,38 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bullet : MonoBehaviour {
-
-    GameObject obj;
-    public ObjectPooler ObjectPooler;
-    public float timer;
-    float seconds = 0;
-
-    // Use this for initialization
-    void Start () {
-        obj = this.gameObject;
-        timer = Time.time;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Time.time > timer + 1)
-        {
-            timer = Time.time;
-            seconds++;           
-        }
-
-        if (seconds == 5)
-        {
-            ObjectPooler.Instance.ReturnObjectToPool(obj);
-            seconds = 0;
-        }
+        
+    void OnEnable(){    
+        StartCoroutine(RemoveAfterSeconds(2, gameObject));
     }
 
-    void OnTriggerEnter(Collider col)
+    private void Start()
     {
-        if (col.gameObject.tag != "enemy") {            
-            ObjectPooler.Instance.ReturnObjectToPool(obj);
-            seconds = 0;
-        }   
+        
+    }
+        
+    void Update () {
+       
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        gameObject.SetActive(false);        
+    }
+
+    private void OnDisable()
+    {        
+        transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    IEnumerator RemoveAfterSeconds(int seconds, GameObject obj)
+    {
+        yield return new WaitForSeconds(2);
+        obj.SetActive(false);
     }
 }
