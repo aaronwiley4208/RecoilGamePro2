@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class newShoot : MonoBehaviour
-{    
+{
+    //if no object is set in editor load default projectile
+    public GameObject projectile;
     public float range = 50.0f;
-    public float bulletImpulse = 10.0f;
-    private Transform player;
+    public float bulletImpulse = 10.0f;   
     private bool onRange = false;
+    private Transform player;
+
 
     private void Awake()
     {
@@ -23,7 +26,7 @@ public class newShoot : MonoBehaviour
     {
         if (onRange)
         {            
-            GameObject temp = ObjectPool.SharedInstance.GetPooledObject();
+            GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
             temp.transform.position = transform.position;
             temp.transform.rotation = transform.rotation;
             temp.SetActive(true);

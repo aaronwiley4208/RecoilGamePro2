@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 33683783498668570}
   - component: {fileID: 23733589555574156}
   - component: {fileID: 135018395463859170}
-  - component: {fileID: 114515953002325928}
   - component: {fileID: 54344543950396310}
+  - component: {fileID: 114515953002325928}
   m_Layer: 10
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5e14c4d3f67034abe763da1c2190d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expireTime: 5
 --- !u!135 &135018395463859170
 SphereCollider:
   m_ObjectHideFlags: 1

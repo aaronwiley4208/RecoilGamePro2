@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ObjectPoolItem
+{
+    public GameObject objectToPool;
+    public int amountToPool;
+}
+
 public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;    
+    public List<ObjectPoolItem> itemsToPool;
 
     private void Awake()
     {
@@ -15,35 +21,46 @@ public class ObjectPool : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        pooledObjects = new List<GameObject>();
-        GrowPool();
-	}
+        pooledObjects = new List<GameObject>();        
+        foreach (ObjectPoolItem item in itemsToPool)
+        {
+            for (int i = 0; i < item.amountToPool; i++)
+            {
+                GameObject obj = Instantiate(item.objectToPool);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
     
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(string tag)
     {
-        for(int i = 0; i < pooledObjects.Count; i++)
+        for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
             {
                 return pooledObjects[i];
             }
         }
-        GrowPool();
-        return GetPooledObject();
+        GrowPool(tag);
+        return GetPooledObject(tag);        
     }
 
-    private void GrowPool()
+    private void GrowPool(string tag)
     {
-        for (int i = 0; i < amountToPool; i++)
+        foreach (ObjectPoolItem item in itemsToPool)
         {
-            GameObject obj = (GameObject)Instantiate(objectToPool);
-            obj.SetActive(false);
-            pooledObjects.Add(obj);
+            if (item.objectToPool.tag == tag)
+            {
+                    GameObject obj = Instantiate(item.objectToPool);
+                    obj.SetActive(false);
+                    pooledObjects.Add(obj);                    
+                }
+            }
         }
-    }
 }

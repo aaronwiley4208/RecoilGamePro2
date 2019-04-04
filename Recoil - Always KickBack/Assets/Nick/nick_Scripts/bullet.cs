@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bullet : MonoBehaviour {
-        
+
+    public int expireTime = 5;
+    
+
     void OnEnable(){    
-        StartCoroutine(RemoveAfterSeconds(2, gameObject));
+        StartCoroutine(RemoveAfterSeconds(expireTime, gameObject));
     }
 
-    private void Start()
+    private void Awake()
     {
         
     }
@@ -19,7 +22,8 @@ public class bullet : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        gameObject.SetActive(false);        
+        gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 
     private void OnDisable()
@@ -29,7 +33,7 @@ public class bullet : MonoBehaviour {
 
     IEnumerator RemoveAfterSeconds(int seconds, GameObject obj)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(seconds);
         obj.SetActive(false);
     }
 }
