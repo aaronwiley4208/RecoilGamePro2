@@ -20,11 +20,10 @@ public class bullet : MonoBehaviour {
         if (Time.time > timer + 1)
         {
             timer = Time.time;
-            seconds++;
-            Debug.Log(seconds);
+            seconds++;           
         }
 
-        if (seconds >= 5)
+        if (seconds == 5)
         {
             ObjectPooler.Instance.ReturnObjectToPool(obj);
             seconds = 0;
@@ -36,7 +35,6 @@ public class bullet : MonoBehaviour {
         if (col.gameObject.tag != "enemy") {            
             ObjectPooler.Instance.ReturnObjectToPool(obj);
             seconds = 0;
-        }       
-        
+        }   
     }
 }
