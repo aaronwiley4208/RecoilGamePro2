@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33672075064948456}
   - component: {fileID: 23453239488147184}
   - component: {fileID: 65098156024916066}
-  - component: {fileID: 114091788324561544}
+  - component: {fileID: 114581886638057714}
   m_Layer: 11
   m_Name: Second Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449087695640750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.924, y: 1.5, z: 0}
+  m_LocalPosition: {x: 27.283, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114091788324561544
+--- !u!114 &114581886638057714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449087695640750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9efed95af291e04bbdacce57a20a877, type: 3}
+  m_Script: {fileID: 11500000, guid: b15a101996488c240ba0cd135ed80226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1414892552421142, guid: 1059daddb522d2c4bb93b17503a691d5, type: 2}

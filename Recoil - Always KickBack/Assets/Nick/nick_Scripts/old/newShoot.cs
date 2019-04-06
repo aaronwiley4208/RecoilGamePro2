@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class newShoot : MonoBehaviour
 {
-    //if no object is set in editor load default projectile
     public GameObject projectile;
     public float range = 50.0f;
-    public float bulletImpulse = 10.0f;   
-    private bool onRange = false;
+    public float bulletImpulse = 10.0f;      
     private Transform player;
-    private int layerMask;
-    private RaycastHit hit;
+    private int layerMask;    
 
     private void Awake()
     {
@@ -23,13 +20,16 @@ public class newShoot : MonoBehaviour
     }
     void Start()
     {        
-        float rand = Random.Range(1.5f, 2.0f);
+        float rand = Random.Range(1.0f, 2.0f);
         InvokeRepeating("Shoot", 2, rand);       
     }
 
     void Shoot()
     {
-        if (onRange)
+        RaycastHit hit;
+        Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, range, layerMask);
+
+        if (hit.collider.tag == "Player")
         {
             GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
             temp.transform.position = transform.position;
@@ -41,27 +41,6 @@ public class newShoot : MonoBehaviour
     }
 
     void Update()
-    {                       
-        if (Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, range, layerMask))
-        {
-            if (hit.collider.tag == "Player")
-            {
-                onRange = true;
-            }
-            else
-            {
-                onRange = false;
-            }
-        }
-
-        if(onRange == true)
-        {
-            Debug.DrawLine(transform.position, player.transform.position, Color.green);
-        }
-        else
-        {
-            Debug.DrawLine(transform.position, player.transform.position, Color.red);
-        }
-
+    {        
     }
 }

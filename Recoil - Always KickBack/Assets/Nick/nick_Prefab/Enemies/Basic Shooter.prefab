@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33815870300483826}
   - component: {fileID: 23893624714440306}
   - component: {fileID: 65814514936849820}
-  - component: {fileID: 114856126905425912}
+  - component: {fileID: 114105859089823858}
   m_Layer: 11
   m_Name: Basic Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1663385350889788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 1.5, z: 0}
+  m_LocalPosition: {x: 21.45, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114856126905425912
+--- !u!114 &114105859089823858
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1663385350889788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9efed95af291e04bbdacce57a20a877, type: 3}
+  m_Script: {fileID: 11500000, guid: b15a101996488c240ba0cd135ed80226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1382607418927878, guid: 40838a9ca244a4a4b84c532ad9e9adf5, type: 2}
