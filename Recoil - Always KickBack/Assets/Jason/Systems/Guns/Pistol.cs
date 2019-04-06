@@ -28,19 +28,33 @@ public class Pistol : MonoBehaviour {
     [SerializeField]
     [Tooltip("Starting clip size for this gun")]
     private int clipSize;
+    [SerializeField]
+    private bool fullAuto;
+    [SerializeField]
+    [Tooltip("How many shots fire per second")]
+    private int fireRate = 1;
+    private float fireTimer;
 
 	// Use this for initialization
 	void Start () {
         gunHolder.SetGunDistance(gunToPlayerDistance);
         gunClip.SetClipSize(clipSize);
+        fireTimer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        // Update timer
+        fireTimer += Time.deltaTime;
         // Get Direction from player to gun
         Vector3 playerToGun = (player.position - transform.position).normalized;
         if (Input.GetMouseButtonDown(0)) {
             Fire(playerToGun);
+        } else if (Input.GetMouseButton(0) && fullAuto) {
+            if (fireTimer > (1 / (float)fireRate)) {
+                Fire(playerToGun);
+                fireTimer = 0;
+            }
         }
 	}
 
@@ -49,5 +63,6 @@ public class Pistol : MonoBehaviour {
             return;
         // If the clip says we can fire, fire bullet and recoil.
         recoilMovement.Recoil(recoilForce, direction);
+        gunBarrel.Fire(-direction);
     }
 }

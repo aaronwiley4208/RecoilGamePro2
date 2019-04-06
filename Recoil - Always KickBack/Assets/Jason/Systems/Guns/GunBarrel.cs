@@ -29,21 +29,27 @@ public class GunBarrel : MonoBehaviour {
         Vector3 mouseToPlayer = (mousePos - transform.position).normalized;
 
         // Check input, if click, fire a bullet
-        if (Input.GetMouseButtonDown(0)) {
-            Fire(mouseToPlayer);
-        }
+        //if (Input.GetMouseButtonDown(0)) {
+        //    Fire(mouseToPlayer);
+        //}
 
         VisualizeSpread(mouseToPlayer);
 	}
 
-    private void Fire(Vector3 direction) {
-        // We need to determine the spread if there are multiple bullets
-        Vector3[] directions = ComputeSpread(direction);
-
-        for (int i = 0; i < bulletsPerClick; i++) {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(directions[i]));
+    public void Fire(Vector3 direction) {
+        if (bulletsPerClick == 1) {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(direction));
             Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
-            bulletRB.AddForce(directions[i] * bulletForce, ForceMode.Impulse);
+            bulletRB.AddForce(direction * bulletForce, ForceMode.Impulse);
+        } else {
+            // We need to determine the spread if there are multiple bullets
+            Vector3[] directions = ComputeSpread(direction);
+
+            for (int i = 0; i < bulletsPerClick; i++) {
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(directions[i]));
+                Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+                bulletRB.AddForce(directions[i] * bulletForce, ForceMode.Impulse);
+            }
         }
     }
 
