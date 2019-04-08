@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - enemy
+  - Bullet
+  - Pellet
+  - Enemy
+  - Cannonball
   layers:
   - Default
   - TransparentFX
@@ -16,6 +19,8 @@ TagManager:
   - 
   - PostProcessing
   - Player
+  - Bullets
+  - Enemies
   - 
   - 
   - 
@@ -35,9 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Wall
   m_SortingLayers:
   - name: Default
     uniqueID: 0

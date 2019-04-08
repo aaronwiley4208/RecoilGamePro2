@@ -4,39 +4,36 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour {
 
-    GameObject obj;
-    public ObjectPooler ObjectPooler;
-    public float timer;
-    float seconds = 0;
+    public int expireTime = 5;
+    
 
-    // Use this for initialization
-    void Start () {
-        obj = this.gameObject;
-        timer = Time.time;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Time.time > timer + 1)
-        {
-            timer = Time.time;
-            seconds++;
-            Debug.Log(seconds);
-        }
-
-        if (seconds >= 5)
-        {
-            ObjectPooler.Instance.ReturnObjectToPool(obj);
-            seconds = 0;
-        }
+    void OnEnable(){    
+        StartCoroutine(RemoveAfterSeconds(expireTime, gameObject));
     }
 
-    void OnTriggerEnter(Collider col)
+    private void Awake()
     {
-        if (col.gameObject.tag != "enemy") {            
-            ObjectPooler.Instance.ReturnObjectToPool(obj);
-            seconds = 0;
-        }       
         
+    }
+        
+    void Update () {
+       
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        gameObject.SetActive(false);
+        StopAllCoroutines();
+    }
+
+    private void OnDisable()
+    {        
+        transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    IEnumerator RemoveAfterSeconds(int seconds, GameObject obj)
+    {
+        yield return new WaitForSeconds(seconds);
+        obj.SetActive(false);
     }
 }
