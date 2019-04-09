@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     public float bulletImpulse = 10.0f;
     private Transform player;
     private int layerMask;
+    
 
     private void Awake()
     {
@@ -37,15 +38,16 @@ public class Shoot : MonoBehaviour
         while (true)
         {
             RaycastHit hit;
-            Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, range, layerMask);
-
-            if (hit.collider.tag == "Player")
-            {
-                GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
-                temp.transform.position = transform.position;
-                temp.transform.rotation = transform.rotation;
-                temp.SetActive(true);                
-                Fire(temp);
+            if(Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, range, layerMask))
+            {                
+                if (hit.collider.tag == player.tag)
+                {
+                    GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
+                    temp.transform.position = transform.position;
+                    temp.transform.rotation = transform.rotation;
+                    temp.SetActive(true);
+                    Fire(temp);
+                }
             }
             yield return new WaitForSeconds(rand);
         }
