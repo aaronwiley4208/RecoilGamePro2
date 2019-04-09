@@ -132,7 +132,7 @@ public class ChargerAI : MonoBehaviour {
                 break;
             case (int)States.ATTACKING:  //completed
                 //if player not in range
-                if (Vector3.Distance(player.transform.position, this.transform.position) > 10)
+                if (Vector3.Distance(player.transform.position, this.transform.position) > agroRange)
                 {
                     //assuming x plane for now
                     //if within patrol zone
@@ -170,11 +170,13 @@ public class ChargerAI : MonoBehaviour {
                     //can enemy currently attack?
                     if (Time.time > canNextAttack)
                     {
+                        Debug.Log("CHARGE!");
                         //set next viable attack time, spaghetti style
                         canNextAttack = Time.time + attackCooldown;
 
                         //what?  me?  ripping this from jason's gun script?  whaaaaat?  noooo, definitely not
                         toPlayer = (transform.position - player.transform.position).normalized;
+                        toPlayer.z = 0;
                         this.GetComponent<Rigidbody>().AddForce(toPlayer * lungeForce, ForceMode.Impulse);
                     }
 
