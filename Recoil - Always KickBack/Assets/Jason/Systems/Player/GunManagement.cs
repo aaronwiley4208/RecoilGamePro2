@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// Manages switching guns and updating necessary scripts when doing so.
 /// </summary>
 public class GunManagement : MonoBehaviour {
-    public enum Guns { PISTOL, SHOTGUN, MACHINEGUN }
+    public enum Guns { PISTOL, SHOTGUN, MACHINEGUN, SNIPER }
 
     [SerializeField]
     private Guns currentGun;
@@ -25,6 +25,8 @@ public class GunManagement : MonoBehaviour {
     private GameObject shotgun;
     [SerializeField]
     private GameObject machinegun;
+    [SerializeField]
+    private GameObject sniper;
 
     [Header("UI")]
     [SerializeField]
@@ -35,6 +37,8 @@ public class GunManagement : MonoBehaviour {
     private Outline shotgunSelection;
     [SerializeField]
     private Outline machinegunSelection;
+    [SerializeField]
+    private Outline sniperSelection;
 
     private Dictionary<Guns, GameObject> guns;
     private Dictionary<Guns, Outline> outlines;
@@ -45,16 +49,19 @@ public class GunManagement : MonoBehaviour {
         guns.Add(Guns.PISTOL, pistol);
         guns.Add(Guns.SHOTGUN, shotgun);
         guns.Add(Guns.MACHINEGUN, machinegun);
+        guns.Add(Guns.SNIPER, sniper);
         outlines = new Dictionary<Guns, Outline>();
         outlines.Add(Guns.PISTOL, pistolSelection);
         outlines.Add(Guns.SHOTGUN, shotgunSelection);
         outlines.Add(Guns.MACHINEGUN, machinegunSelection);
+        outlines.Add(Guns.SNIPER, sniperSelection);
 
         ChangeGun(currentGun);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        // Check for wheel
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
 		if (wheelInput > 0) {
             //currentGun = (Guns)(((int)(currentGun + 1)) % System.Enum.GetValues(typeof(Guns)).Length);
@@ -65,6 +72,11 @@ public class GunManagement : MonoBehaviour {
             currentGun = (Guns)Mathf.Repeat((float)currentGun - 1, System.Enum.GetValues(typeof(Guns)).Length);
             ChangeGun(currentGun);
         }
+        // Check for Numpad inputs
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentGun = Guns.PISTOL; ChangeGun(Guns.PISTOL); } 
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) { currentGun = Guns.SHOTGUN; ChangeGun(Guns.SHOTGUN); }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) { currentGun = Guns.MACHINEGUN; ChangeGun(Guns.MACHINEGUN); }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) { currentGun = Guns.SNIPER; ChangeGun(Guns.SNIPER); }
     }
 
 
