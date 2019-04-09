@@ -36,6 +36,10 @@ public class ChargerAI : MonoBehaviour {
     public float moveCooldown = 3;
     private float canNextMove = 0;
 
+    //magnitudes for movement, put here for convenience
+    public float moveX = 1;
+    public float moveY = .5f;
+
     public enum States
     {
         PATROLLING, //as name states
@@ -49,16 +53,30 @@ public class ChargerAI : MonoBehaviour {
         leftPoint = leftObj.transform;
         rightPoint = rightObj.transform;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		switch (currentState)
+
+    // Update is called once per frame
+    void Update() {
+        switch (currentState)
         {
             case (int)States.PATROLLING:  //completed
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
                     nextState = (int)States.ATTACKING;
+                }
+                //if outside of patrol zone
+                else if (this.transform.position.x < leftPoint.position.x || this.transform.position.x > rightPoint.position.x)
+                {
+                    //and if outside of ybounds
+                    if (this.transform.position.y < leftPoint.position.y - yBound || this.transform.position.y > leftPoint.position.y + yBound)
+                    {
+                        nextState = (int)States.LOST;
+                    }
+                    else  //else within ybounds
+                    {
+                        Debug.Log("PATROLLING>RETURNING");
+                        nextState = (int)States.RETURNING;
+                    }
                 }
                 else
                 {
@@ -69,32 +87,45 @@ public class ChargerAI : MonoBehaviour {
                     {
                         canNextMove = Time.time + moveCooldown;
 
-                        //when moving left
+                        //"turning"
                         if (isMovingLeft)
                         {
-                            moveVector = this.transform.position;
-                            moveVector.x -= 1;
-                            moveVector.y += .2f;
-
-                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
                             //if reaching the leftmost edge of the patrol route
                             if (this.transform.position.x <= leftPoint.position.x + patrolLeniency)
                             {
                                 isMovingLeft = false;
                             }
                         }
-                        else  //if moving right
+                        else
                         {
-                            moveVector = this.transform.position;
-                            moveVector.x += 1;
-                            moveVector.y += .2f;
-
-                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
-                            //if reaching the leftmost edge of the patrol route
-                            if (this.transform.position.x >= leftPoint.position.x - patrolLeniency)
+                            //if reaching the rightmost edge of the patrol route
+                            if (this.transform.position.x >= rightPoint.position.x - patrolLeniency)
                             {
                                 isMovingLeft = true;
                             }
+                        }
+
+                        //moving
+                        //when moving left
+                        if (isMovingLeft)
+                        {
+                            //Debug.Log("I AM MOVING LEFT");
+                            //moveVector = this.transform.position;
+                            moveVector.x = 0 - moveX;
+                            moveVector.y = moveY;
+                            moveVector.z = 0;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
+                        }
+                        else  //if moving right
+                        {
+                            //Debug.Log("I AM MOVING RIGHT");
+                            //moveVector = this.transform.position;
+                            moveVector.x = moveX;
+                            moveVector.y = moveY;
+                            moveVector.z = 0;
+
+                            this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce, ForceMode.Impulse);
                         }
                     }
                 }
@@ -106,14 +137,16 @@ public class ChargerAI : MonoBehaviour {
                     //assuming x plane for now
                     //if within patrol zone
                     if (this.transform.position.x >= leftPoint.position.x && this.transform.position.x <= rightPoint.position.x)
-                    {   
+                    {
                         //special case check, in case enemy gets stranded directly above/below patrol zone
-                        if (this.transform.position.y < leftPoint.position.y+yBound && this.transform.position.y > leftPoint.position.y - yBound)
+                        if (this.transform.position.y < leftPoint.position.y + yBound && this.transform.position.y > leftPoint.position.y - yBound)
                         {
+                            Debug.Log("ATTACKING>PATROLLING");
                             nextState = (int)States.PATROLLING;
                         }
                         else  //edge case lost transition
                         {
+                            Debug.Log("ATTACKING>LOST");
                             nextState = (int)States.LOST;
                         }
                     }
@@ -122,10 +155,12 @@ public class ChargerAI : MonoBehaviour {
                         //if within y bounds, return
                         if (this.transform.position.y < leftPoint.position.y + yBound && this.transform.position.y > leftPoint.position.y - yBound)
                         {
+                            Debug.Log("ATTACKING>RETURNING");
                             nextState = (int)States.RETURNING;
                         }
                         else  //else enemy is lost
                         {
+                            Debug.Log("ATTACKING>LOST");
                             nextState = (int)States.LOST;
                         }
                     }
@@ -142,13 +177,14 @@ public class ChargerAI : MonoBehaviour {
                         toPlayer = (transform.position - player.transform.position).normalized;
                         this.GetComponent<Rigidbody>().AddForce(toPlayer * lungeForce, ForceMode.Impulse);
                     }
-                    
+
                 }
                 break;
             case (int)States.RETURNING:  //completed
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
+                    Debug.Log("RETURNING>ATTACKING");
                     nextState = (int)States.ATTACKING;
                 }
                 //if player not in range and player within patrol zone
@@ -157,16 +193,19 @@ public class ChargerAI : MonoBehaviour {
                     //special case check, in case enemy gets stranded directly above/below patrol zone
                     if (this.transform.position.y < leftPoint.position.y + yBound && this.transform.position.y > leftPoint.position.y - yBound)
                     {
+                        Debug.Log("RETURNING>PATROLLING");
                         nextState = (int)States.PATROLLING;
                     }
                     else  //edge case lost transition
                     {
+                        Debug.Log("RETURNING>LOST 1");
                         nextState = (int)States.LOST;
                     }
                 }
                 //otherwise, if enemy outside of y bounds
-                else if (this.transform.position.y < leftPoint.position.y + yBound && this.transform.position.y > leftPoint.position.y - yBound)
+                else if (this.transform.position.y < leftPoint.position.y - yBound || this.transform.position.y > leftPoint.position.y + yBound)
                 {
+                    Debug.Log("RETURNING>LOST 2");
                     nextState = (int)States.LOST;
                 }
                 else
@@ -182,18 +221,20 @@ public class ChargerAI : MonoBehaviour {
                         {
                             isMovingLeft = false;
                             //arbitrary movement vector
-                            moveVector = this.transform.position;
-                            moveVector.x += 1;
-                            moveVector.y += .2f;
+                            //moveVector = this.transform.position;
+                            moveVector.x = moveX;
+                            moveVector.y = moveY;
+                            moveVector.z = 0;
 
                             this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce * urgency, ForceMode.Impulse);
                         } else if (this.transform.position.x >= rightPoint.position.x)
                         {
                             isMovingLeft = true;
                             //arbitrary movement vector
-                            moveVector = this.transform.position;
-                            moveVector.x -= 1;
-                            moveVector.y += .2f;
+                            //moveVector = this.transform.position;
+                            moveVector.x = 0 - moveX;
+                            moveVector.y = moveY;
+                            moveVector.z = 0;
 
                             this.GetComponent<Rigidbody>().AddForce(moveVector * moveForce * urgency, ForceMode.Impulse);
                         }
@@ -209,6 +250,7 @@ public class ChargerAI : MonoBehaviour {
                 //if player in range
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= agroRange)
                 {
+                    Debug.Log("LOST>ATTACKING");
                     nextState = (int)States.ATTACKING;
                 }
                 else
