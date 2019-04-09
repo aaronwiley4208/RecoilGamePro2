@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1371,16 +1371,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4908900400934090, guid: 48f272315c7807d44848f859d6cf54fe, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f272315c7807d44848f859d6cf54fe, type: 2}
   m_IsPrefabAsset: 0
---- !u!4 &151444789 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1665717947}
 --- !u!1 &155737779
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,11 +4336,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!4 &342667145 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: e869b3836c56d6348813f0bad6ac1928,
-    type: 2}
-  m_PrefabInternal: {fileID: 1324626662}
 --- !u!43 &346929116
 Mesh:
   m_ObjectHideFlags: 0
@@ -6645,11 +6635,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!4 &450122603 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1708451634}
 --- !u!43 &461312868
 Mesh:
   m_ObjectHideFlags: 0
@@ -8115,6 +8100,11 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!4 &541470332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: e869b3836c56d6348813f0bad6ac1928,
+    type: 2}
+  m_PrefabInternal: {fileID: 1416667346}
 --- !u!1 &561617287
 GameObject:
   m_ObjectHideFlags: 0
@@ -10096,11 +10086,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!4 &825511601 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: e869b3836c56d6348813f0bad6ac1928,
-    type: 2}
-  m_PrefabInternal: {fileID: 1416667346}
 --- !u!1 &846171184
 GameObject:
   m_ObjectHideFlags: 0
@@ -10149,12 +10134,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 450122603}
-  - {fileID: 151444789}
-  - {fileID: 2028420432}
-  - {fileID: 2146716331}
-  - {fileID: 825511601}
-  - {fileID: 342667145}
+  - {fileID: 1545654727}
+  - {fileID: 1292114924}
+  - {fileID: 1702145921}
+  - {fileID: 1445465999}
+  - {fileID: 541470332}
+  - {fileID: 1712965670}
   - {fileID: 1027032168}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -11809,7 +11794,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &993335867
 MonoBehaviour:
@@ -18210,6 +18195,11 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!4 &1292114924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: 9ad47f1603808d047a20d76946b5e24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1665717947}
 --- !u!1001 &1324626662
 Prefab:
   m_ObjectHideFlags: 0
@@ -19138,6 +19128,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1445465999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: 9ad47f1603808d047a20d76946b5e24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1473974675}
 --- !u!43 &1468144968
 Mesh:
   m_ObjectHideFlags: 0
@@ -19887,6 +19882,11 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!4 &1545654727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: 9ad47f1603808d047a20d76946b5e24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1708451634}
 --- !u!43 &1565550322
 Mesh:
   m_ObjectHideFlags: 0
@@ -21087,6 +21087,11 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!4 &1702145921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4150320536347270, guid: 9ad47f1603808d047a20d76946b5e24b,
+    type: 2}
+  m_PrefabInternal: {fileID: 214218439}
 --- !u!1001 &1708451634
 Prefab:
   m_ObjectHideFlags: 0
@@ -21134,6 +21139,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1712965670 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: e869b3836c56d6348813f0bad6ac1928,
+    type: 2}
+  m_PrefabInternal: {fileID: 1324626662}
 --- !u!43 &1722865319
 Mesh:
   m_ObjectHideFlags: 0
@@ -23833,11 +23843,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!4 &2028420432 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b,
-    type: 2}
-  m_PrefabInternal: {fileID: 214218439}
 --- !u!1 &2043505879
 GameObject:
   m_ObjectHideFlags: 0
@@ -24062,8 +24067,3 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!4 &2146716331 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1473974675}
