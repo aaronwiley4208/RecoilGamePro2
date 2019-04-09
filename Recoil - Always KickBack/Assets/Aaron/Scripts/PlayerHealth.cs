@@ -54,7 +54,13 @@ public class PlayerHealth : MonoBehaviour {
 				}
 			}            
             print(HP);
-        }
+		}if(col.gameObject.name == "BarrierPickUp"){
+			Destroy(col.gameObject);
+			if(barrierStr < 3){
+				barrierStr = 3;
+				barrierEffect.Play ();
+			}
+		}
         
     }
     private void OnTriggerEnter(Collider other)

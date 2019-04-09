@@ -5041,6 +5041,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!1001 &382949023
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239745406463670, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025729590567402, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26d3449075daa5b46ac5e1eec6030a8d, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!43 &392561538
 Mesh:
   m_ObjectHideFlags: 0
@@ -20590,6 +20636,11 @@ Prefab:
       propertyPath: heart3
       value: 
       objectReference: {fileID: 2043505879}
+    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: barrierStr
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9728ec68a87e5314a8141f98aedb9577, type: 2}
   m_IsPrefabAsset: 0
@@ -20626,7 +20677,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c905fcdb1507e6248912e2a7925c82ab, type: 2}
+  - {fileID: 2100000, guid: 85a5bdff4b3141d4dbd47ee5905bc916, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
