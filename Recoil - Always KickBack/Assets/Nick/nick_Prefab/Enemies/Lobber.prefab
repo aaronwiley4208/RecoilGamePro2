@@ -125,5 +125,5 @@ MonoBehaviour:
   range: 50
   isLob: 1
   bulletImpulse: 10
-  bulletsInMag: 4
+  bulletsInMag: 1
   reloadTime: 5
