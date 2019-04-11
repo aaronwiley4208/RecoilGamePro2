@@ -9,10 +9,16 @@ public class GunClip : MonoBehaviour {
 
     [Header("Clip Info")]
     [SerializeField]
-    [Tooltip("The max clip size for this gun")]
+    [Tooltip("The max clip size for this gun. Set by the overall gun script (Pistol for now).")]
     private int clipSize;
     [SerializeField]
     private int clipCount;
+
+    [Header("Reload Fields")]
+    [SerializeField]
+    private GroundCheck groundCheck;
+    [SerializeField]
+    private Rigidbody playerRigidbody;
 
     [Header("UI")]
     [SerializeField]
@@ -60,9 +66,12 @@ public class GunClip : MonoBehaviour {
     /// <returns>Whether or not the gun can fire.</returns>
     public bool Fire() {
         if (clipCount > 0) {
-            clipCount--;
-            if (UIStyle == GunUIStyles.IMAGEFILL) clipUI.fillAmount = (float)clipCount / clipSize;
-            else if (UIStyle == GunUIStyles.BULLETS) RemoveOneBullet();
+            // We only want to lose a bullet if we went in the air
+            //if (!(groundCheck.isGrounded && Mathf.Abs(playerRigidbody.velocity.y) < 0.01f)) {
+                clipCount--;
+                if (UIStyle == GunUIStyles.IMAGEFILL) clipUI.fillAmount = (float)clipCount / clipSize;
+                else if (UIStyle == GunUIStyles.BULLETS) RemoveOneBullet();
+            //}
             return true;
         } else return false;
     }
