@@ -25,9 +25,8 @@ public class Shoot : MonoBehaviour
     }
 
     void Start()
-    {
-        float randReload = Random.Range(reloadTime -.25f, reloadTime +.25f);        
-        StartCoroutine("Fire", randReload);
+    {               
+        StartCoroutine("Fire", reloadTime);
     }
 
     void Update()
