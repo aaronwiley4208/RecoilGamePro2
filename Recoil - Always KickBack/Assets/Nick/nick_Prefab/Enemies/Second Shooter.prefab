@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23453239488147184}
   - component: {fileID: 65098156024916066}
   - component: {fileID: 114581886638057714}
+  - component: {fileID: 114726455419770648}
   m_Layer: 11
   m_Name: Second Shooter
   m_TagString: Enemy
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449087695640750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.283, y: 1.5, z: 0}
+  m_LocalPosition: {x: 89.7, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,4 +111,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1414892552421142, guid: 1059daddb522d2c4bb93b17503a691d5, type: 2}
   range: 50
+  isLob: 0
   bulletImpulse: 10
+--- !u!114 &114726455419770648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449087695640750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a4ba74cb255454cbdac21f7c7fca04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
