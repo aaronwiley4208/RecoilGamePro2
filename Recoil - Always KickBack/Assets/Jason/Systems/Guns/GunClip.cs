@@ -18,7 +18,7 @@ public class GunClip : MonoBehaviour {
     [SerializeField]
     private GroundCheck groundCheck;
     [SerializeField]
-    private Rigidbody playerRigidbody;
+    private Transform player;
 
     [Header("UI")]
     [SerializeField]
@@ -64,14 +64,21 @@ public class GunClip : MonoBehaviour {
     /// if this gun can fire.
     /// </summary>
     /// <returns>Whether or not the gun can fire.</returns>
-    public bool Fire() {
+    public bool Fire(Vector3 fireDirection) {
         if (clipCount > 0) {
-            // We only want to lose a bullet if we went in the air
+            // We don't want to lose a bullet if we're shooting ourselves into the ground.
+            bool useBullet = true;
+            RaycastHit hit;
+            if (Physics.Raycast(player.position, fireDirection, out hit, 2)) {
+                if (hit.collider.tag == "Ground")
+                    useBullet = false;
+            }
             //if (!(groundCheck.isGrounded && Mathf.Abs(playerRigidbody.velocity.y) < 0.01f)) {
+            if (useBullet) { 
                 clipCount--;
                 if (UIStyle == GunUIStyles.IMAGEFILL) clipUI.fillAmount = (float)clipCount / clipSize;
                 else if (UIStyle == GunUIStyles.BULLETS) RemoveOneBullet();
-            //}
+            }
             return true;
         } else return false;
     }

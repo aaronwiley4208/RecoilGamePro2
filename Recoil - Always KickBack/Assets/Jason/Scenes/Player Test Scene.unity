@@ -243,7 +243,7 @@ MonoBehaviour:
   clipSize: 0
   clipCount: 0
   groundCheck: {fileID: 772943186}
-  playerRigidbody: {fileID: 772943178}
+  player: {fileID: 772943182}
   UIStyle: 1
   clipUI: {fileID: 693811595}
   reloadPulseUI: {fileID: 693811594}
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   clipSize: 0
   clipCount: 0
   groundCheck: {fileID: 772943186}
-  playerRigidbody: {fileID: 772943178}
+  player: {fileID: 772943182}
   UIStyle: 1
   clipUI: {fileID: 1161555168}
   reloadPulseUI: {fileID: 1161555170}
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   clipSize: 0
   clipCount: 0
   groundCheck: {fileID: 772943186}
-  playerRigidbody: {fileID: 772943178}
+  player: {fileID: 772943182}
   UIStyle: 1
   clipUI: {fileID: 1489404537}
   reloadPulseUI: {fileID: 1489404536}
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   clipSize: 0
   clipCount: 0
   groundCheck: {fileID: 772943186}
-  playerRigidbody: {fileID: 772943178}
+  player: {fileID: 772943182}
   UIStyle: 1
   clipUI: {fileID: 258012411}
   reloadPulseUI: {fileID: 258012410}
