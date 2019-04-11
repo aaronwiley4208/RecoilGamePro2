@@ -113,6 +113,8 @@ MonoBehaviour:
   range: 50
   isLob: 0
   bulletImpulse: 10
+  bulletsInMag: 1
+  reloadTime: 3
 --- !u!114 &114726455419770648
 MonoBehaviour:
   m_ObjectHideFlags: 1

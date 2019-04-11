@@ -8,6 +8,9 @@ public class Shoot : MonoBehaviour
     public float range = 50.0f;
     public bool isLob = false;
     public float bulletImpulse = 10.0f;
+    public int bulletsInMag = 1;
+    public float reloadTime = 2.0f;
+    private float timeBetweenShots = .05f;
     private Transform player;
     private int layerMask;
     
@@ -23,15 +26,15 @@ public class Shoot : MonoBehaviour
 
     void Start()
     {
-        float rand = Random.Range(1.0f, 2.0f);        
-        StartCoroutine("Fire", rand);
+        float randReload = Random.Range(reloadTime -.25f, reloadTime +.25f);        
+        StartCoroutine("Fire", randReload);
     }
 
     void Update()
     {
     }
 
-    IEnumerator Fire(float rand)
+    IEnumerator Fire(float reload)
     {
         yield return new WaitForSeconds(3f);
 
@@ -42,14 +45,18 @@ public class Shoot : MonoBehaviour
             {                
                 if (hit.collider.tag == player.tag)
                 {
-                    GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
-                    temp.transform.position = transform.position;
-                    temp.transform.rotation = transform.rotation;
-                    temp.SetActive(true);
-                    Fire(temp);
+                    for (int i = 0; i < bulletsInMag; i++)
+                    {
+                        GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
+                        temp.transform.position = transform.position;
+                        temp.transform.rotation = transform.rotation;
+                        temp.SetActive(true);
+                        Fire(temp);
+                        yield return new WaitForSeconds(timeBetweenShots);
+                    }                    
                 }
             }
-            yield return new WaitForSeconds(rand);
+            yield return new WaitForSeconds(reload);
         }
     }
 
