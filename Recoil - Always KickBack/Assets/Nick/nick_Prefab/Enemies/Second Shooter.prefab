@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449087695640750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 89.7, y: 1.5, z: 0}
+  m_LocalPosition: {x: 22.26, y: 10.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   isLob: 0
   bulletImpulse: 10
   bulletsInMag: 1
-  reloadTime: 3
+  reloadTime: 2
 --- !u!114 &114726455419770648
 MonoBehaviour:
   m_ObjectHideFlags: 1
