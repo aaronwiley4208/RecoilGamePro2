@@ -65,4 +65,8 @@ public class Pistol : MonoBehaviour {
         recoilMovement.Recoil(recoilForce, direction);
         gunBarrel.Fire(-direction);
     }
+
+    public void UpgradeForce(float forceDelta) {
+        recoilForce += forceDelta;
+    }
 }
