@@ -15,12 +15,22 @@ public class ReloadOnGround : MonoBehaviour {
     private GunClip[] gunClips;
 
     private float lastVelocity; // Vel of the last frame 
-	
-	// If player is grounded and moving down, reload
-	void OnCollisionEnter (Collision collision) {
-        if (collision.collider.tag == "Ground" && collision.relativeVelocity.y > 0) {
+    private bool lastGround;
+
+    void Update() {
+        // Check if last was false and now is true, basically an OnGroundEnter scenario.
+        if (!lastGround && groundCheck.isGrounded) {
             foreach (GunClip clip in gunClips)
                 clip.Reload();
         }
-	}
+        lastGround = groundCheck.isGrounded;
+    }
+
+    // If player is grounded and moving down, reload
+    //void OnCollisionEnter (Collision collision) {
+    //       if (collision.collider.tag == "Ground" && collision.relativeVelocity.y > 0) {
+    //           foreach (GunClip clip in gunClips)
+    //               clip.Reload();
+    //       }
+    //}
 }

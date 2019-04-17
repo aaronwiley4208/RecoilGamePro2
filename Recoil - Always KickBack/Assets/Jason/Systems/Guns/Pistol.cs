@@ -59,10 +59,14 @@ public class Pistol : MonoBehaviour {
 	}
 
     private void Fire(Vector3 direction) {
-        if (!gunClip.Fire())
+        if (!gunClip.Fire(direction))
             return;
         // If the clip says we can fire, fire bullet and recoil.
         recoilMovement.Recoil(recoilForce, direction);
         gunBarrel.Fire(-direction);
+    }
+
+    public void UpgradeForce(float forceDelta) {
+        recoilForce += forceDelta;
     }
 }
