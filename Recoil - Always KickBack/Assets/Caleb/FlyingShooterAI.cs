@@ -17,7 +17,7 @@ public class FlyingShooterAI : MonoBehaviour {
     public float preferredRangePadding = .5f;  //needed?
 
     //used in getting to preferred range
-    Vector3 temp;
+    public Vector3 temp;
 
     public int currentState = 2;
     public int nextState = 2;
@@ -27,14 +27,14 @@ public class FlyingShooterAI : MonoBehaviour {
     float canNextFire = 0;  //when the AI is next allowed to fire
     public float fireDelay = 5;  //how long the AI waits between shots
 
+    public Vector3 FUCK;
+
     public enum States
     {
         IDLE,
         ATTACKING,
         RETURNING
     }
-
-    private bool hardStop = false;  //emergency stop boolean, just in case
 
     // Use this for initialization
     void Start()
@@ -48,6 +48,8 @@ public class FlyingShooterAI : MonoBehaviour {
     {
 
         //agent.destination = player.transform.position;  //move code
+
+        Debug.DrawLine(player.transform.position, this.transform.position, Color.green);
 
         switch (currentState)
         {
@@ -75,9 +77,20 @@ public class FlyingShooterAI : MonoBehaviour {
                 {
                     //normalize the distance from player to enemy, then scale that to get to the
                     //preferred point along that distance
-                    temp = (player.transform.position - this.transform.position);
-                    temp = temp.normalized * preferredRange;
-                    temp.z = 0;
+
+                    temp = (this.transform.position - player.transform.position);
+                    temp.z = player.transform.position.z;
+                    Vector3 FUCK = this.transform.position;
+                    Debug.DrawLine(player.transform.position, temp, Color.blue);
+
+                    temp.z = player.transform.position.z;
+                    temp.Normalize();
+                    temp += player.transform.position;
+                    Debug.DrawLine(player.transform.position, temp, Color.yellow);
+
+                    temp = temp * preferredRange;
+                    
+                    Debug.DrawLine(player.transform.position, temp, Color.red);
 
                     //set the agent's destination to the preferred location
                     agent.destination = temp;
