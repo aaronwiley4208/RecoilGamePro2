@@ -25,7 +25,11 @@ public class Shoot : MonoBehaviour
     }
 
     void Start()
+<<<<<<< HEAD
     {           
+=======
+    {               
+>>>>>>> master
         StartCoroutine("Fire", reloadTime);
     }
 
