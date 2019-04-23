@@ -40,11 +40,19 @@ public class GunManagement : MonoBehaviour {
     [SerializeField]
     private Outline sniperSelection;
 
-    private Dictionary<Guns, GameObject> guns;
+    public Dictionary<Guns, GameObject> guns;
     private Dictionary<Guns, Outline> outlines;
 
-	// Use this for initialization
-	void Start () {
+    public static GunManagement instance;
+
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else Destroy(this);
+    }
+
+    // Use this for initialization
+    void Start () {
         guns = new Dictionary<Guns, GameObject>();
         guns.Add(Guns.PISTOL, pistol);
         guns.Add(Guns.SHOTGUN, shotgun);
@@ -87,5 +95,13 @@ public class GunManagement : MonoBehaviour {
             if (g == gun) { guns[g].SetActive(true); outlines[g].effectDistance = new Vector2(selectedOutlineWidth, 1); } 
             else { guns[g].SetActive(false); outlines[g].effectDistance = new Vector2(1, 1); }
         }
+    }
+
+    /// <summary>
+    /// Get the Gameobject for the current gun
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetCurrentGun() {
+        return guns[currentGun];
     }
 }
