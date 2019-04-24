@@ -1389,7 +1389,7 @@ MonoBehaviour:
   currentState: 2
   nextState: 2
   fireDelay: 5
-  subPosition: {fileID: 370748887}
+  FUCK: {x: 0, y: 0, z: 0}
 --- !u!33 &1728866341
 MeshFilter:
   m_ObjectHideFlags: 0

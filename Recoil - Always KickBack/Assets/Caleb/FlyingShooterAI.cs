@@ -13,7 +13,7 @@ public class FlyingShooterAI : MonoBehaviour {
     public float agroRange = 20;
     public float deAgroRange = 30;
     public float firingRange = 25;
-    public float preferredRange = 15;
+    public float preferredRange = 15f;
     public float preferredRangePadding = .5f;  //needed?
 
     //used in getting to preferred range
@@ -48,8 +48,9 @@ public class FlyingShooterAI : MonoBehaviour {
     {
 
         //agent.destination = player.transform.position;  //move code
-
-        Debug.DrawLine(player.transform.position, this.transform.position, Color.green);
+        Vector3 bob = this.transform.position;
+        bob.z = player.transform.position.z;
+        Debug.DrawLine(player.transform.position, bob, Color.green);
 
         switch (currentState)
         {
@@ -79,16 +80,10 @@ public class FlyingShooterAI : MonoBehaviour {
                     //preferred point along that distance
 
                     temp = (this.transform.position - player.transform.position);
-                    temp.z = player.transform.position.z;
-                    Vector3 FUCK = this.transform.position;
-                    Debug.DrawLine(player.transform.position, temp, Color.blue);
+                    temp.z = 0;
 
-                    temp.z = player.transform.position.z;
-                    temp.Normalize();
-                    temp += player.transform.position;
-                    Debug.DrawLine(player.transform.position, temp, Color.yellow);
-
-                    temp = temp * preferredRange;
+                    temp = temp.normalized;
+                    temp = player.transform.position + (temp * 15);
                     
                     Debug.DrawLine(player.transform.position, temp, Color.red);
 
