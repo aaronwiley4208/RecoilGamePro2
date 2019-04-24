@@ -503,7 +503,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f29febe871375aa4e8227800480dd0f6, type: 2}
+  - {fileID: 2100000, guid: b83f09f90f7b16b49939f29f4060bc61, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -645,6 +645,8 @@ MonoBehaviour:
   heart1: {fileID: 0}
   heart2: {fileID: 0}
   heart3: {fileID: 0}
+  rechargeTimer: 2
+  barrierPsec: 0.1
 --- !u!114 &114151246905690492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,6 +709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 4953191895560730}
   UIStyle: 1
   clipUI: {fileID: 0}
   reloadPulseUI: {fileID: 0}
@@ -777,6 +781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 4953191895560730}
   UIStyle: 1
   clipUI: {fileID: 0}
   reloadPulseUI: {fileID: 0}
@@ -850,6 +856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 4953191895560730}
   UIStyle: 1
   clipUI: {fileID: 0}
   reloadPulseUI: {fileID: 0}
@@ -1046,6 +1054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 4953191895560730}
   UIStyle: 1
   clipUI: {fileID: 0}
   reloadPulseUI: {fileID: 0}
@@ -5668,7 +5678,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1305094958031014}
   serializedVersion: 5
-  lengthInSec: 0.5
+  lengthInSec: 0.75
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -5740,7 +5750,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.75
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5793,7 +5803,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5847,7 +5857,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.990566, g: 0.46075395, b: 0.2663314, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.6039734, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6231,7 +6241,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: -0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6434,7 +6444,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 75
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6551,7 +6561,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 0.2297287
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -6559,16 +6569,16 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.6634064
-          value: 1
-          inSlope: 0.17314447
-          outSlope: 0.17314447
+          time: 0.7371769
+          value: 0.79729736
+          inSlope: 0.24482901
+          outSlope: 0.24482901
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.62991804
+          inWeight: 0.29949865
           outWeight: 0
         m_PreInfinity: 2
-        m_PostInfinity: 1
+        m_PostInfinity: 0
         m_RotationOrder: 4
       minCurve:
         serializedVersion: 2
@@ -8026,22 +8036,22 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.009757996
-          value: 0
-          inSlope: 0
-          outSlope: 0
+          time: 0
+          value: 1
+          inSlope: 1.5434148
+          outSlope: 1.5434148
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0
+          outWeight: 0.19421732
         - serializedVersion: 3
-          time: 0.73170394
-          value: 1
-          inSlope: 2.8494782
-          outSlope: 2.8494782
+          time: 1
+          value: 0.24324036
+          inSlope: 0.8243247
+          outSlope: 0.8243247
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.29411447
+          inWeight: 0.19672132
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 0
@@ -10210,7 +10220,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 5a65dcc8885d2e749a97ad69ff6192d9, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
