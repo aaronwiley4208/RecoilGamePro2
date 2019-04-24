@@ -1406,6 +1406,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 198718230534171966, guid: 48f272315c7807d44848f859d6cf54fe,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198718230534171966, guid: 48f272315c7807d44848f859d6cf54fe,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198718230534171966, guid: 48f272315c7807d44848f859d6cf54fe,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277923255283068, guid: 48f272315c7807d44848f859d6cf54fe, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f272315c7807d44848f859d6cf54fe, type: 2}
   m_IsPrefabAsset: 0
@@ -2275,6 +2294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 0}
   UIStyle: 1
   clipUI: {fileID: 693811595}
   reloadPulseUI: {fileID: 693811594}
@@ -11104,6 +11125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 0}
   UIStyle: 1
   clipUI: {fileID: 1161555168}
   reloadPulseUI: {fileID: 1161555170}
@@ -12545,6 +12568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 0}
   UIStyle: 1
   clipUI: {fileID: 1489404537}
   reloadPulseUI: {fileID: 1489404536}
@@ -12708,6 +12733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipSize: 0
   clipCount: 0
+  groundCheck: {fileID: 0}
+  player: {fileID: 0}
   UIStyle: 1
   clipUI: {fileID: 258012411}
   reloadPulseUI: {fileID: 258012410}
@@ -22379,101 +22406,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: clipUI
-      value: 
-      objectReference: {fileID: 258012411}
-    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: reloadPulseUI
-      value: 
-      objectReference: {fileID: 258012410}
-    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUIParent
-      value: 
-      objectReference: {fileID: 1821597000}
-    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUITop
-      value: 
-      objectReference: {fileID: 93929556}
-    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: clipUI
-      value: 
-      objectReference: {fileID: 1489404537}
-    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: reloadPulseUI
-      value: 
-      objectReference: {fileID: 1489404536}
-    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUIParent
-      value: 
-      objectReference: {fileID: 1463994577}
-    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUITop
-      value: 
-      objectReference: {fileID: 219047745}
-    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: clipUI
-      value: 
-      objectReference: {fileID: 1161555168}
-    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: reloadPulseUI
-      value: 
-      objectReference: {fileID: 1161555170}
-    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUIParent
-      value: 
-      objectReference: {fileID: 889681417}
-    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUITop
-      value: 
-      objectReference: {fileID: 1623063936}
-    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: clipUI
-      value: 
-      objectReference: {fileID: 693811595}
-    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: reloadPulseUI
-      value: 
-      objectReference: {fileID: 693811594}
-    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUIParent
-      value: 
-      objectReference: {fileID: 136942298}
-    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: BulletUITop
-      value: 
-      objectReference: {fileID: 1061466115}
-    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: heart1
-      value: 
-      objectReference: {fileID: 582762764}
-    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: heart2
-      value: 
-      objectReference: {fileID: 1102038784}
-    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
-        type: 2}
-      propertyPath: heart3
-      value: 
-      objectReference: {fileID: 2043505879}
     - target: {fileID: 114623496124303390, guid: 9728ec68a87e5314a8141f98aedb9577,
         type: 2}
       propertyPath: pistolSelection
@@ -22494,6 +22426,101 @@ Prefab:
       propertyPath: sniperSelection
       value: 
       objectReference: {fileID: 258012409}
+    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: heart1
+      value: 
+      objectReference: {fileID: 582762764}
+    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: heart2
+      value: 
+      objectReference: {fileID: 1102038784}
+    - target: {fileID: 114015574519199166, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: heart3
+      value: 
+      objectReference: {fileID: 2043505879}
+    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: clipUI
+      value: 
+      objectReference: {fileID: 693811595}
+    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: reloadPulseUI
+      value: 
+      objectReference: {fileID: 693811594}
+    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUIParent
+      value: 
+      objectReference: {fileID: 136942298}
+    - target: {fileID: 114266009656934330, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUITop
+      value: 
+      objectReference: {fileID: 1061466115}
+    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: clipUI
+      value: 
+      objectReference: {fileID: 1161555168}
+    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: reloadPulseUI
+      value: 
+      objectReference: {fileID: 1161555170}
+    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUIParent
+      value: 
+      objectReference: {fileID: 889681417}
+    - target: {fileID: 114942663886436176, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUITop
+      value: 
+      objectReference: {fileID: 1623063936}
+    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: clipUI
+      value: 
+      objectReference: {fileID: 1489404537}
+    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: reloadPulseUI
+      value: 
+      objectReference: {fileID: 1489404536}
+    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUIParent
+      value: 
+      objectReference: {fileID: 1463994577}
+    - target: {fileID: 114451160375397370, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUITop
+      value: 
+      objectReference: {fileID: 219047745}
+    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: clipUI
+      value: 
+      objectReference: {fileID: 258012411}
+    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: reloadPulseUI
+      value: 
+      objectReference: {fileID: 258012410}
+    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUIParent
+      value: 
+      objectReference: {fileID: 1821597000}
+    - target: {fileID: 114629055825909418, guid: 9728ec68a87e5314a8141f98aedb9577,
+        type: 2}
+      propertyPath: BulletUITop
+      value: 
+      objectReference: {fileID: 93929556}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9728ec68a87e5314a8141f98aedb9577, type: 2}
   m_IsPrefabAsset: 0
@@ -22748,15 +22775,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.45
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 15.4
       objectReference: {fileID: 0}
     - target: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4099214217996546, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -22780,7 +22807,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1663385350889788, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105859089823858, guid: 9ad47f1603808d047a20d76946b5e24b,
+        type: 2}
+      propertyPath: bulletsInMag
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ad47f1603808d047a20d76946b5e24b, type: 2}
@@ -22987,6 +23019,11 @@ Prefab:
     - target: {fileID: 114105859089823858, guid: 9ad47f1603808d047a20d76946b5e24b,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105859089823858, guid: 9ad47f1603808d047a20d76946b5e24b,
+        type: 2}
+      propertyPath: bulletsInMag
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
