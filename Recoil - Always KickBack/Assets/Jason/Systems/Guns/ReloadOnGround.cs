@@ -22,6 +22,7 @@ public class ReloadOnGround : MonoBehaviour {
         if (!lastGround && groundCheck.isGrounded) {
             foreach (GunClip clip in gunClips)
                 clip.Reload();
+            GetComponent<ReloadInAir>().Reset();
         }
         lastGround = groundCheck.isGrounded;
     }

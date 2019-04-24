@@ -2,10 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClipUpgrade : MonoBehaviour {
+public class ClipUpgrade : MonoBehaviour, IUpgrade {
+    [SerializeField]
+    private int clipAmount;
+    [SerializeField]
+    private Pistol gun;
+    [SerializeField]
+    [Tooltip("The UI Button this should spawn when you get the upgrade")]
+    private GameObject uiPrefab;
 
-	// Use this for initialization
-	void Start () {
+    public void Equip() {
+        gun.UpgradeClip(clipAmount);
+    }
+
+    public GameObject GetGameObject() {
+        return gameObject;
+    }
+
+    public GameObject GetUIPrefab() {
+        return uiPrefab;
+    }
+
+    public float GetValue() {
+        return clipAmount;
+    }
+
+    public void SetGun(Pistol pistol) {
+        gun = pistol;
+    }
+
+    public void Unequip() {
+        gun.UpgradeClip(-clipAmount);
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
