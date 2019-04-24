@@ -6,7 +6,7 @@ using UnityEngine;
 /// Class for the pistol, links to a bunch of other scripts and controls them.
 /// </summary>
 public class Pistol : MonoBehaviour {
-
+    [Header("Links")]
     // Links to the gun barrel, which actually fires the bullets
     public GunBarrel gunBarrel;
     // Link to the recoil movement, which moves the player on firing
@@ -18,8 +18,15 @@ public class Pistol : MonoBehaviour {
 
     [SerializeField]
     private Transform player;
+    [Tooltip("Link to the Air Reloader, just for the upgrade component")]
+    public ReloadInAir airReloader;
 
     [Header("Gun Properties")]
+    [SerializeField]
+    private GunManagement.Guns gunType;
+    [SerializeField]
+    [Tooltip("Number of air reloads for this gun. This should always start at 0")]
+    private int numAirReloads;
     [SerializeField]
     [Tooltip("How far away the gun is held")]
     private float gunToPlayerDistance;
@@ -68,5 +75,15 @@ public class Pistol : MonoBehaviour {
 
     public void UpgradeForce(float forceDelta) {
         recoilForce += forceDelta;
+    }
+
+    public void UpgradeClip(int clipDelta) {
+        clipSize += clipDelta;
+        gunClip.SetClipSize(clipSize);
+    }
+
+    public void UpgradeAirReloads(int reloadDelta) {
+        numAirReloads += reloadDelta;
+        airReloader.SetMaxReloads(gunType, numAirReloads);
     }
 }

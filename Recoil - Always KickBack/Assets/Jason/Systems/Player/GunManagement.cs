@@ -10,7 +10,7 @@ public class GunManagement : MonoBehaviour {
     public enum Guns { PISTOL, SHOTGUN, MACHINEGUN, SNIPER }
 
     [SerializeField]
-    private Guns currentGun;
+    public Guns currentGun;
 
     [Header("Player Attributes")]
     [SerializeField]
@@ -71,11 +71,11 @@ public class GunManagement : MonoBehaviour {
 	void Update () {
         // Check for wheel
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-		if (wheelInput > 0) {
+		if (wheelInput < 0) {
             //currentGun = (Guns)(((int)(currentGun + 1)) % System.Enum.GetValues(typeof(Guns)).Length);
             currentGun = (Guns)Mathf.Repeat((float)currentGun + 1, System.Enum.GetValues(typeof(Guns)).Length);
             ChangeGun(currentGun);
-        } else if (wheelInput < 0) {
+        } else if (wheelInput > 0) {
             //currentGun = (Guns)(((int)(currentGun - 1)) % System.Enum.GetValues(typeof(Guns)).Length);
             currentGun = (Guns)Mathf.Repeat((float)currentGun - 1, System.Enum.GetValues(typeof(Guns)).Length);
             ChangeGun(currentGun);
