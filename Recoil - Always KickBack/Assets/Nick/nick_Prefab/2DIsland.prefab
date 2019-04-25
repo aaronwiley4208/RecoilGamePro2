@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 114091172412742768}
   - component: {fileID: 251613062345961140}
   - component: {fileID: 60781208442514388}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: 2DIsland
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +37,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546735527694148}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98.52636, y: 6.743226, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -108.35106, y: -4.0488815, z: -4.843623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,8 +112,16 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 3.2359898, y: 4.9123607}
+      - {x: 3.2311935, y: 5.0737605}
+      - {x: 3.2311935, y: 5.0737605}
+      - {x: 3.2311935, y: 5.0737605}
+      - {x: 3.241745, y: 4.718696}
       - {x: 3.2369487, y: 4.880096}
       - {x: 2.7527874, y: 4.865708}
+      - {x: 2.7575836, y: 4.704308}
+      - {x: 2.7470322, y: 5.0593724}
+      - {x: 2.7470322, y: 5.0593724}
+      - {x: 2.7470322, y: 5.0593724}
       - {x: 2.7518284, y: 4.8979726}
     - - {x: -1.5937481, y: 5.462423}
       - {x: -1.6680701, y: 4.7945757}
@@ -202,6 +210,7 @@ MonoBehaviour:
   pathData:
     _points:
     - {x: 3.1449127, y: 4.7158184}
+    - {x: 3.139637, y: 4.8933506}
     - {x: 3.1343613, y: 5.070883}
     - {x: -1.5971527, y: 5.0029516}
     - {x: -1.545723, y: 4.62603}
@@ -222,9 +231,16 @@ MonoBehaviour:
       controlNext: {x: 0, y: 0}
       controlPrev: {x: 0, y: 0}
       type: 4
+    - radius: 1
+      controlNext: {x: 0, y: 0}
+      controlPrev: {x: 0, y: 0}
+      type: 4
     _closed: 1
     _splitDistance: 1
     _data:
+    - directionOverride: 100
+      cutOverrides: 
+      scale: 1
     - directionOverride: 100
       cutOverrides: 
       scale: 1
