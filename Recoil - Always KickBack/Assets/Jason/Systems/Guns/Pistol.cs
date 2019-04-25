@@ -15,6 +15,8 @@ public class Pistol : MonoBehaviour {
     public GunHolder gunHolder;
     // Link to the thing that controls clips and reload.
     public GunClip gunClip;
+    // Link to the thing that holds bayonettes for this gun
+    public BayonetteHolder bayonetteHolder;
 
     [SerializeField]
     private Transform player;
