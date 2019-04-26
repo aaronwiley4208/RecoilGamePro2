@@ -91,4 +91,10 @@ public class BayonetteHolder : MonoBehaviour {
         SpawnKnife();
         knifeSpreadAngle += spreadAngleIncrement;
     }
+
+    public void ScaleKnives(float scaleDelta) {
+        knifeScale *= (1 + scaleDelta);
+        foreach (GameObject knife in knives)
+            knife.transform.localScale = new Vector3(1, knifeScale, 1);
+    }
 }

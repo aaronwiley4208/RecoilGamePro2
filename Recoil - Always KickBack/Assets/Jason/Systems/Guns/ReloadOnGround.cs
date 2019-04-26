@@ -14,6 +14,12 @@ public class ReloadOnGround : MonoBehaviour {
     [SerializeField]
     private GunClip[] gunClips;
 
+    [Header("Sound Stuff")]
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip audioClip;
+
     private float lastVelocity; // Vel of the last frame 
     private bool lastGround;
 
@@ -23,6 +29,8 @@ public class ReloadOnGround : MonoBehaviour {
             foreach (GunClip clip in gunClips)
                 clip.Reload();
             GetComponent<ReloadInAir>().Reset();
+            audioSource.clip = audioClip;
+            audioSource.Play();
         }
         lastGround = groundCheck.isGrounded;
     }

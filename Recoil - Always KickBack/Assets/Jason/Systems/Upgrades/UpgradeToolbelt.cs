@@ -80,8 +80,11 @@ public class UpgradeToolbelt : MonoBehaviour {
             // Instantiate the upgrade
             GameObject upgrade = Instantiate(upgrades[i].GetUIPrefab(), upgradeList);
             upgrade.transform.position = firstPos.position - new Vector3(0, i * verticalDistance, 0);
-            // Update the value text
-            upgrade.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "+" + upgrades[i].GetValue();
+            // Update the value text. Assume if it's less than 1 that it's a percentage
+            if (upgrades[i].GetValue() < 1) // percentage
+                upgrade.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "* " + upgrades[i].GetValue() * 100 + "%";
+            else // some added value
+                upgrade.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "+ " + upgrades[i].GetValue();
 
             upgradeUIs.Add(upgrade);
         }

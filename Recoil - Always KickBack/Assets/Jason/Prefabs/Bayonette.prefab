@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4396641416291600}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Bayonette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33145538353447162}
   - component: {fileID: 114849129385161394}
   - component: {fileID: 64788688262199574}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: The Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ForceUpgrade : MonoBehaviour, IUpgrade {
     [SerializeField]
+    [Range(0, .1f)]
     private float forceAmount;
     [SerializeField]
     private Pistol gun;

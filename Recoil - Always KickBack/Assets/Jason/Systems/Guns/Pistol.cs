@@ -44,6 +44,10 @@ public class Pistol : MonoBehaviour {
     private int fireRate = 1;
     private float fireTimer;
 
+    [Header("Sound Stuff")]
+    [SerializeField]
+    private AudioSource gunShot;
+
 	// Use this for initialization
 	void Start () {
         gunHolder.SetGunDistance(gunToPlayerDistance);
@@ -73,10 +77,11 @@ public class Pistol : MonoBehaviour {
         // If the clip says we can fire, fire bullet and recoil.
         recoilMovement.Recoil(recoilForce, direction);
         gunBarrel.Fire(-direction);
+        gunShot.Play();
     }
 
     public void UpgradeForce(float forceDelta) {
-        recoilForce += forceDelta;
+        recoilForce *= (1 + forceDelta);
     }
 
     public void UpgradeClip(int clipDelta) {
@@ -84,8 +89,26 @@ public class Pistol : MonoBehaviour {
         gunClip.SetClipSize(clipSize);
     }
 
+    public void UpgradeClip(float clipDelta) {
+        clipSize = ((clipSize * clipDelta) < 1) ? clipSize+1 : clipSize + Mathf.RoundToInt(clipSize * clipDelta);
+        gunClip.SetClipSize(clipSize);
+    }
+
     public void UpgradeAirReloads(int reloadDelta) {
         numAirReloads += reloadDelta;
         airReloader.SetMaxReloads(gunType, numAirReloads);
+    }
+
+    public void UpgradeBayonette(int bayonetteDelta) {
+        for (int i = 0; i < bayonetteDelta; i++)
+            bayonetteHolder.AddKnife();
+    }
+
+    /// <summary>
+    /// Upgrade the scale of the bayonettes.
+    /// </summary>
+    /// <param name="upgradeScale">The percentage to upgrade by</param>
+    public void UpgradeBayonetteScale(float upgradeScale) {
+        bayonetteHolder.ScaleKnives(upgradeScale);
     }
 }
