@@ -12,10 +12,14 @@ public class EnemyHP : MonoBehaviour {
 
     public bool isArmored;
 
-	// Use this for initialization
-	void Start () {
+    Material original;
+    public Material hurtColor;
+
+    // Use this for initialization
+    void Start () {
         currentHP = maxHP;
-	}
+        original = this.gameObject.GetComponent<Renderer>().material;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -26,6 +30,7 @@ public class EnemyHP : MonoBehaviour {
     {
         if (Time.time >= canNextBeHurt)
         {
+            this.gameObject.GetComponent<Renderer>().material = original;
             if (isArmored)
             {
                 if (piercing)
@@ -38,7 +43,7 @@ public class EnemyHP : MonoBehaviour {
                     }
                     else
                     {
-                        //damage effects
+                        this.gameObject.GetComponent<Renderer>().material = hurtColor;
                         //put here to prevent damage/kill overlaps
                     }
                 }
@@ -57,7 +62,7 @@ public class EnemyHP : MonoBehaviour {
                 }
                 else
                 {
-                    //damage effects
+                    this.gameObject.GetComponent<Renderer>().material = hurtColor;
                     //put here to prevent damage/kill overlaps
                 }
             }
