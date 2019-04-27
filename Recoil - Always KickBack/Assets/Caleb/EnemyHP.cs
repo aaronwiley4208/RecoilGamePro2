@@ -10,6 +10,8 @@ public class EnemyHP : MonoBehaviour {
     private float canNextBeHurt = 0;
     public float invulnPeriod = 0;
 
+    public bool isArmored;
+
 	// Use this for initialization
 	void Start () {
         currentHP = maxHP;
@@ -20,16 +22,44 @@ public class EnemyHP : MonoBehaviour {
 		
 	}
 
-    public void Damage(int dam)
+    public void Damage(int dam, bool piercing)  //type denotes standard/piercing, at 0 and 1 respectively
     {
         if (Time.time >= canNextBeHurt)
         {
-            canNextBeHurt = Time.time + invulnPeriod;
-            currentHP = currentHP - dam;
-            //damage effects
-            if (currentHP <= 0)
+            if (isArmored)
             {
-                Kill();
+                if (piercing)
+                {
+                    canNextBeHurt = Time.time + invulnPeriod;
+                    currentHP = currentHP - dam;
+                    if (currentHP <= 0)
+                    {
+                        Kill();
+                    }
+                    else
+                    {
+                        //damage effects
+                        //put here to prevent damage/kill overlaps
+                    }
+                }
+                else
+                {
+                    //do plink noise
+                }
+            }
+            else
+            {
+                canNextBeHurt = Time.time + invulnPeriod;
+                currentHP = currentHP - dam;
+                if (currentHP <= 0)
+                {
+                    Kill();
+                }
+                else
+                {
+                    //damage effects
+                    //put here to prevent damage/kill overlaps
+                }
             }
         }
     }
