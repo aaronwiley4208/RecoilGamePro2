@@ -7,17 +7,22 @@ public class Shoot : MonoBehaviour
     public GameObject projectile;
     public float range = 50.0f;
     public bool isLob = false;
+    public bool isDumb = false;
     public float bulletImpulse = 10.0f;
     public int bulletsInMag = 1;
     public float reloadTime = 2.0f;
     private float timeBetweenShots = .05f;
-    private Transform player;
+    private Transform target;
     private int layerMask;
     
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        if (isDumb == false) {
+            target = GameObject.FindWithTag("Player").transform;
+        } else {
+            target = transform.Find("Aimer");
+        }        
         int enemyLayerIndex = LayerMask.NameToLayer("Enemies");
         int bulletLayerIndex = LayerMask.NameToLayer("Bullets");
         layerMask = (1 << enemyLayerIndex) | (1 << bulletLayerIndex);
@@ -39,22 +44,31 @@ public class Shoot : MonoBehaviour
 
         while (true)
         {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, range, layerMask))
-            {                
-                if (hit.collider.tag == player.tag)
-                {
-                    for (int i = 0; i < bulletsInMag; i++)
-                    {
-                        GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
-                        temp.transform.position = transform.position;
-                        temp.transform.rotation = transform.rotation;
-                        temp.SetActive(true);
-                        Fire(temp);
-                        yield return new WaitForSeconds(timeBetweenShots);
-                    }                    
+            if(isDumb == false) {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, range, layerMask)) {
+                    if (hit.collider.tag == target.tag) {
+                        for (int i = 0; i < bulletsInMag; i++) {
+                            GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
+                            temp.transform.position = transform.position;
+                            temp.transform.rotation = transform.rotation;
+                            temp.SetActive(true);
+                            Fire(temp);
+                            yield return new WaitForSeconds(timeBetweenShots);
+                        }
+                    }
+                }
+            } else {
+                for (int i = 0; i < bulletsInMag; i++) {
+                    GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
+                    temp.transform.position = transform.position;
+                    temp.transform.rotation = transform.rotation;
+                    temp.SetActive(true);
+                    Fire(temp);
+                    yield return new WaitForSeconds(timeBetweenShots);
                 }
             }
+            
             yield return new WaitForSeconds(reload);
         }
     }
@@ -63,7 +77,7 @@ public class Shoot : MonoBehaviour
     {
         if(isLob == true)
         {
-            var dir = player.position - transform.position; // get target direction
+            var dir = target.position - transform.position; // get target direction
             var h = dir.y;  // get height difference
             dir.y = 0;  // retain only the horizontal direction
             var dist = dir.magnitude;  // get horizontal distance
@@ -74,7 +88,11 @@ public class Shoot : MonoBehaviour
         }
         else
         {
-            obj.transform.GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);
+            obj.transform.GetComponent<Rigidbody>().AddForce((target.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);
         }
     }
+
+    
 }
+
+
