@@ -91,7 +91,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: afcabb9b455ab0f4d822cebbadcf4ccc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   projectile: {fileID: 1901978282078380, guid: b655b69552b57e345b9f5faaf46060f2, type: 2}
   range: 50
   isLob: 1
-  isDumb: 1
+  isDumb: 0
   bulletImpulse: 10
   bulletsInMag: 1
   reloadTime: 5
