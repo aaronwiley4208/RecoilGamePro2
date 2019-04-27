@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public enum FollowMode { STICKY, DRAG }
+    public enum FollowMode { STICKY, DRAG, SMOOTH }
 
     [SerializeField]
     private Transform player;
@@ -19,6 +19,14 @@ public class CameraFollow : MonoBehaviour {
     [SerializeField]
     [Tooltip("The speed at which the camera will follow the player")]
     private float cameraSpeed;
+
+    [Header("Smooth Damp Settings")]
+    [SerializeField]
+    [Tooltip("The current speed of the camera")]
+    private Vector3 velocity;
+    [SerializeField]
+    [Tooltip("The time it should take to reach the target")]
+    private float smoothTime;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +49,9 @@ public class CameraFollow : MonoBehaviour {
                     transform.position = targetPos;
                 else 
                     transform.position += (cameraToPlayer * cameraSpeed * Time.deltaTime);
+                break;
+            case FollowMode.SMOOTH:
+                transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
                 break;
         }
 	}

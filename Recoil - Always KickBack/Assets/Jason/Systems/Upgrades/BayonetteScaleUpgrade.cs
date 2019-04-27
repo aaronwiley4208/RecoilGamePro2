@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClipUpgrade : MonoBehaviour, IUpgrade {
+public class BayonetteScaleUpgrade : MonoBehaviour, IUpgrade {
     [SerializeField]
     [Range(0, .2f)]
-    private float clipPercentage;
+    private float scaleAmount;
     [SerializeField]
     private Pistol gun;
     [SerializeField]
-    [Tooltip("The UI Button this should spawn when you get the upgrade")]
+    [Tooltip("The UI button this should use for its upgrade")]
     private GameObject uiPrefab;
 
     public void Equip() {
-        gun.UpgradeClip(clipPercentage);
+        gun.UpgradeBayonetteScale(scaleAmount);
     }
 
     public GameObject GetGameObject() {
@@ -25,7 +25,7 @@ public class ClipUpgrade : MonoBehaviour, IUpgrade {
     }
 
     public float GetValue() {
-        return clipPercentage;
+        return scaleAmount;
     }
 
     public void SetGun(Pistol pistol) {
@@ -33,7 +33,7 @@ public class ClipUpgrade : MonoBehaviour, IUpgrade {
     }
 
     public void Unequip() {
-        gun.UpgradeClip(-clipPercentage);
+        gun.UpgradeBayonetteScale(-scaleAmount);
     }
 
     // Use this for initialization

@@ -132,7 +132,7 @@ public class GunClip : MonoBehaviour {
                     columnNo++;
                 }
                 bullet.GetComponent<RectTransform>().localPosition = new Vector3(columnNo * bulletUIHorSeparation, rowNo * bulletUISeparation, 0);
-                Debug.Log("Setting UI");
+                //Debug.Log("Setting UI");
                 bullets.Add(bullet);
                 rowNo++;
             }

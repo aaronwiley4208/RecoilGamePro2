@@ -40,9 +40,14 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
   - 
   - 
   - Wall
+=======
+  - Bayonette
+  - Ground
+>>>>>>> Jason
   m_SortingLayers:
   - name: Default
     uniqueID: 0
