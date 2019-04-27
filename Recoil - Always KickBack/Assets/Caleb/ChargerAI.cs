@@ -175,9 +175,14 @@ public class ChargerAI : MonoBehaviour {
                         canNextAttack = Time.time + attackCooldown;
 
                         //what?  me?  ripping this from jason's gun script?  whaaaaat?  noooo, definitely not
-                        toPlayer = (transform.position - player.transform.position).normalized;
+                        toPlayer = (player.transform.position - transform.position).normalized;
                         toPlayer.z = 0;
-                        this.GetComponent<Rigidbody>().AddForce(toPlayer * lungeForce, ForceMode.Impulse);
+                        toPlayer *= lungeForce;  //pre-emptive scaling
+                        if (toPlayer.y < moveY)
+                        {
+                            toPlayer.y = moveY;  //clamping so that the enemy moves while the player is on the ground
+                        }
+                        this.GetComponent<Rigidbody>().AddForce(toPlayer, ForceMode.Impulse);
                     }
 
                 }
