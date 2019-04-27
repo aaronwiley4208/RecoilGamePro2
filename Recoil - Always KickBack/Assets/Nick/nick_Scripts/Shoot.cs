@@ -25,7 +25,7 @@ public class Shoot : MonoBehaviour
     }
 
     void Start()
-    {               
+    {           
         StartCoroutine("Fire", reloadTime);
     }
 
