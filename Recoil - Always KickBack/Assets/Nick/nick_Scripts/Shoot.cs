@@ -44,21 +44,16 @@ public class Shoot : MonoBehaviour
 
         while (true)
         {
+            bool canFire = false;
             if(isDumb == false) {
-                RaycastHit hit;
+                RaycastHit hit;               
                 if (Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, range, layerMask)) {
                     if (hit.collider.tag == target.tag) {
-                        for (int i = 0; i < bulletsInMag; i++) {
-                            GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
-                            temp.transform.position = transform.position;
-                            temp.transform.rotation = transform.rotation;
-                            temp.SetActive(true);
-                            Fire(temp);
-                            yield return new WaitForSeconds(timeBetweenShots);
-                        }
+                        canFire = true;
                     }
                 }
-            } else {
+            }
+            if (isDumb == true || canFire == true) {
                 for (int i = 0; i < bulletsInMag; i++) {
                     GameObject temp = ObjectPool.SharedInstance.GetPooledObject(projectile.tag);
                     temp.transform.position = transform.position;
@@ -67,8 +62,7 @@ public class Shoot : MonoBehaviour
                     Fire(temp);
                     yield return new WaitForSeconds(timeBetweenShots);
                 }
-            }
-            
+            }                        
             yield return new WaitForSeconds(reload);
         }
     }
