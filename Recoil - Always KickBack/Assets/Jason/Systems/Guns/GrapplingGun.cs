@@ -21,6 +21,8 @@ public class GrapplingGun : MonoBehaviour {
     private int numHooks;
     [SerializeField]
     private GunClip hookClip;
+    [SerializeField]
+    private GameObject grapplingUI;
 
     private GameObject[] hooks;
     private SpringJoint[] springs;
@@ -54,7 +56,7 @@ public class GrapplingGun : MonoBehaviour {
                 Grapple(playerToMouse, 0);
         }
         if (Input.GetKeyUp(KeyCode.E)) {
-            DetachGrapple(0);
+                DetachGrapple(0);
         }
 
         // Check For second grapple
@@ -63,7 +65,7 @@ public class GrapplingGun : MonoBehaviour {
                 Grapple(playerToMouse, 1);
         }
         if (Input.GetKeyUp(KeyCode.Q)) {
-            DetachGrapple(1);
+                DetachGrapple(1);
         }
 
         // Update Rope
@@ -97,15 +99,18 @@ public class GrapplingGun : MonoBehaviour {
 
     private void DetachGrapple(int index) {
         isGrappling = false;
-        ropes[index].enabled = false;
+        if (ropes[index] != null)
+            ropes[index].enabled = false;
         //ropes.enabled = false;
-        Destroy(springs[index]);
+        if (springs[index] != null)
+            Destroy(springs[index]);
     }
 
     /// <summary>
     /// Add a hook to your inventory, only can add one at a time.
     /// </summary>
     public void AddHook() {
+        grapplingUI.SetActive(true); // This is bad way to do this, should check for num hooks on start.
         numHooks++;
         hookClip.SetClipSize(numHooks);
     }

@@ -19,7 +19,6 @@ public class PlayerTeleporter : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        Debug.Log("Triggered");
         if (other.tag == "Teleporter") {
             print("Teleport to " + groundCheck.GetRecentGroundedPosition());
             rigidbody.MovePosition(groundCheck.GetRecentGroundedPosition() + new Vector3(0, .01f, 0));

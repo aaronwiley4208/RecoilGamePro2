@@ -46,6 +46,6 @@ public class GroundCheck : MonoBehaviour {
         return lastGroundedPosition;
     }
     public Vector3 GetRecentGroundedPosition() {
-        return lastGroundedPositions[lastGroundedPositions.Count - 1];
+        return lastGroundedPositions[0];
     }
 }
