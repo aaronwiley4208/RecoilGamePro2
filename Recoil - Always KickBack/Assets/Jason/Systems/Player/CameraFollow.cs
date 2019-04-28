@@ -34,7 +34,7 @@ public class CameraFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         // Move the camera's x and y towards the player based on mode
         Vector3 targetPos = new Vector3(player.position.x, player.position.y, transform.position.z) + offset;
         switch (mode) {

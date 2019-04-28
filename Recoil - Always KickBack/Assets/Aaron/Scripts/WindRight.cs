@@ -8,8 +8,8 @@ public class WindRight : MonoBehaviour {
 
 	void OnTriggerStay(Collider col){
 		if(col.tag == "Player"){
-            col.GetComponent<Rigidbody>().AddForce(Vector3.right * windSpeed, ForceMode.Force);
-            //print("We in");
+            col.GetComponent<Rigidbody>().AddForce(transform.right * windSpeed, ForceMode.Force);
+            
 		}
 	}
 }

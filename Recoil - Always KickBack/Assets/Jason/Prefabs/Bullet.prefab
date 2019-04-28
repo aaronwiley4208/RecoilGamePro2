@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4616045678851898}
   - component: {fileID: 54698921546271864}
   - component: {fileID: 114122754876201234}
-  m_Layer: 12
+  - component: {fileID: 114142304258160132}
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Player Bullet
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ GameObject:
   - component: {fileID: 33312086391259896}
   - component: {fileID: 23882885027530516}
   - component: {fileID: 136210542351889060}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Player Bullet
   m_Icon: {fileID: 0}
@@ -142,6 +143,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTilDeath: 5
+--- !u!114 &114142304258160132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195727896508088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ffd118f8aa8264ebe75234f3d39244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  piercing: 0
+  isDead: 0
 --- !u!136 &136210542351889060
 CapsuleCollider:
   m_ObjectHideFlags: 1

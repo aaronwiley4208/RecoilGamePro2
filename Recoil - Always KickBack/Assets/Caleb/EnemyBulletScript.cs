@@ -7,7 +7,7 @@ public class EnemyBulletScript : MonoBehaviour {
     public int damage = 5;
     public bool piercing = false;
 
-    bool isDead = false;
+    public bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class EnemyBulletScript : MonoBehaviour {
         if (!isDead)
         {
             isDead = true;  //bullet stops being deadly on collision; becomes dead bullet
-            if (true)  //enemy tag check goes here
+            if (col.gameObject.tag == "Enemy")  //enemy tag check goes here
             {
                 col.gameObject.GetComponent<EnemyHP>().Damage(damage, piercing);
                 if (piercing)
