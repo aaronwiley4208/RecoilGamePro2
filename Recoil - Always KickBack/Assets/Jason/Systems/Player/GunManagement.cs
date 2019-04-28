@@ -64,7 +64,7 @@ public class GunManagement : MonoBehaviour {
         outlines.Add(Guns.MACHINEGUN, machinegunSelection);
         outlines.Add(Guns.SNIPER, sniperSelection);
 
-        ChangeGun(currentGun);
+        //ChangeGun(currentGun);
 	}
 	
 	// Update is called once per frame
@@ -73,22 +73,36 @@ public class GunManagement : MonoBehaviour {
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
 		if (wheelInput < 0) {
             //currentGun = (Guns)(((int)(currentGun + 1)) % System.Enum.GetValues(typeof(Guns)).Length);
-            currentGun = (Guns)Mathf.Repeat((float)currentGun + 1, System.Enum.GetValues(typeof(Guns)).Length);
-            ChangeGun(currentGun);
+            int nextGun = GetNextGun();
+            if (nextGun >= 0) ChangeGun((Guns)nextGun);
         } else if (wheelInput > 0) {
             //currentGun = (Guns)(((int)(currentGun - 1)) % System.Enum.GetValues(typeof(Guns)).Length);
-            currentGun = (Guns)Mathf.Repeat((float)currentGun - 1, System.Enum.GetValues(typeof(Guns)).Length);
-            ChangeGun(currentGun);
+            int nextGun = GetPrevGun();
+            if (nextGun >= 0) ChangeGun((Guns)nextGun);
         }
         // Check for Numpad inputs
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentGun = Guns.PISTOL; ChangeGun(Guns.PISTOL); } 
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) { currentGun = Guns.SHOTGUN; ChangeGun(Guns.SHOTGUN); }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) { currentGun = Guns.MACHINEGUN; ChangeGun(Guns.MACHINEGUN); }
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) { currentGun = Guns.SNIPER; ChangeGun(Guns.SNIPER); }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            if (guns[Guns.PISTOL].GetComponent<Pistol>().active) {
+                currentGun = Guns.PISTOL; ChangeGun(Guns.PISTOL);
+            }
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            if (guns[Guns.SHOTGUN].GetComponent<Pistol>().active) {
+                currentGun = Guns.SHOTGUN; ChangeGun(Guns.SHOTGUN);
+            }
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            if (guns[Guns.MACHINEGUN].GetComponent<Pistol>().active) {
+                currentGun = Guns.MACHINEGUN; ChangeGun(Guns.MACHINEGUN);
+            }
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            if (guns[Guns.SNIPER].GetComponent<Pistol>().active) {
+                currentGun = Guns.SNIPER; ChangeGun(Guns.SNIPER);
+            }
+        }
     }
 
 
     private void ChangeGun(Guns gun) {
+        currentGun = gun;
         holder.gunObj = guns[gun].transform;
         // Go through the guns and turn off the ones we're not using.
         foreach (Guns g in System.Enum.GetValues(typeof(Guns))) {
@@ -103,5 +117,34 @@ public class GunManagement : MonoBehaviour {
     /// <returns></returns>
     public GameObject GetCurrentGun() {
         return guns[currentGun];
+    }
+
+    /// <summary>
+    /// Activates the chosen gun
+    /// </summary>
+    public void ActivateGun(Guns gun) {
+        guns[gun].GetComponent<Pistol>().Activate();
+        ChangeGun(gun);
+    }
+
+    // Get the next active gun. If no guns active, return an impossible value
+    private int GetNextGun() {
+        // Cycle once for each type of gun, checking for active status
+        Guns nextGun = currentGun;
+        for (int i = 0; i < System.Enum.GetValues(typeof(Guns)).Length; i++) {
+            nextGun = (Guns)Mathf.Repeat((float)nextGun + 1, System.Enum.GetValues(typeof(Guns)).Length);
+            if (guns[nextGun].GetComponent<Pistol>().active) return (int)nextGun;
+        }
+        return -1;
+    }
+
+    private int GetPrevGun() {
+        // Cycle once for each type of gun, checking for active status
+        Guns nextGun = currentGun;
+        for (int i = 0; i < System.Enum.GetValues(typeof(Guns)).Length; i++) {
+            nextGun = (Guns)Mathf.Repeat((float)nextGun + 1, System.Enum.GetValues(typeof(Guns)).Length);
+            if (guns[nextGun].GetComponent<Pistol>().active) return (int)nextGun;
+        }
+        return -1;
     }
 }

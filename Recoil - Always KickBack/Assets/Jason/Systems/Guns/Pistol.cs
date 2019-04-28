@@ -17,6 +17,8 @@ public class Pistol : MonoBehaviour {
     public GunClip gunClip;
     // Link to the thing that holds bayonettes for this gun
     public BayonetteHolder bayonetteHolder;
+    // Link to the UI for this gun
+    public GameObject UI;
 
     [SerializeField]
     private Transform player;
@@ -48,6 +50,10 @@ public class Pistol : MonoBehaviour {
     [SerializeField]
     private AudioSource gunShot;
 
+    // Whether or not the gun is usable. Sets as true when picked up
+
+    public bool active;
+
 	// Use this for initialization
 	void Start () {
         gunHolder.SetGunDistance(gunToPlayerDistance);
@@ -78,6 +84,15 @@ public class Pistol : MonoBehaviour {
         recoilMovement.Recoil(recoilForce, direction);
         gunBarrel.Fire(-direction);
         gunShot.Play();
+    }
+
+    /// <summary>
+    /// Set the gun to active, turning on its UI and this gameobject, allowing it to shoot.
+    /// </summary>
+    public void Activate() {
+        active = true;
+        gameObject.SetActive(true);
+        UI.SetActive(true);
     }
 
     public void UpgradeForce(float forceDelta) {
