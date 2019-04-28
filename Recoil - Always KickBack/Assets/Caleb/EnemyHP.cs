@@ -10,26 +10,61 @@ public class EnemyHP : MonoBehaviour {
     private float canNextBeHurt = 0;
     public float invulnPeriod = 0;
 
-	// Use this for initialization
-	void Start () {
+    public bool isArmored;
+
+    Material original;
+    public Material hurtColor;
+
+    // Use this for initialization
+    void Start () {
         currentHP = maxHP;
-	}
+        original = this.gameObject.GetComponent<Renderer>().material;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void Damage(int dam)
+    public void Damage(int dam, bool piercing)  //type denotes standard/piercing, at 0 and 1 respectively
     {
         if (Time.time >= canNextBeHurt)
         {
-            canNextBeHurt = Time.time + invulnPeriod;
-            currentHP = currentHP - dam;
-            //damage effects
-            if (currentHP <= 0)
+            this.gameObject.GetComponent<Renderer>().material = original;
+            if (isArmored)
             {
-                Kill();
+                if (piercing)
+                {
+                    canNextBeHurt = Time.time + invulnPeriod;
+                    currentHP = currentHP - dam;
+                    if (currentHP <= 0)
+                    {
+                        Kill();
+                    }
+                    else
+                    {
+                        this.gameObject.GetComponent<Renderer>().material = hurtColor;
+                        //put here to prevent damage/kill overlaps
+                    }
+                }
+                else
+                {
+                    //do plink noise
+                }
+            }
+            else
+            {
+                canNextBeHurt = Time.time + invulnPeriod;
+                currentHP = currentHP - dam;
+                if (currentHP <= 0)
+                {
+                    Kill();
+                }
+                else
+                {
+                    this.gameObject.GetComponent<Renderer>().material = hurtColor;
+                    //put here to prevent damage/kill overlaps
+                }
             }
         }
     }
