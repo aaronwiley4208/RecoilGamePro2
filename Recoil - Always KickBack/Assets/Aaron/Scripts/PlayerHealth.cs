@@ -18,6 +18,12 @@ public class PlayerHealth : MonoBehaviour {
 
     bool barrierActive = false;
     bool gotHit = false;
+    float downTimer = 0;
+    float timer = 0;
+
+    bool invul = false;
+    float invulTimer = 0;
+    float invulLen = .2f;
 
     // Use this for initialization
     void Start () {
@@ -30,38 +36,86 @@ public class PlayerHealth : MonoBehaviour {
 	void Update () {
         if (HP <= 0) {
             StartCoroutine(Die());
-        }	    
+        }        
 		if (barrierStr > 0) {
             barrierEffect.Play();
             barrierMain.startColor = Color.Lerp(Color.red, Color.green, barrierStr/3);
 		} else {
 			barrierEffect.Stop();
-		}
-
-        
-	}
-    //doesnt reset if hit during cooldown, not sure how to fix yet
-    IEnumerator BarrierRegen() {        
-        while(barrierActive) {
-            if (gotHit){
-                gotHit = false;
-                yield return new WaitForSeconds(rechargeTimer);                
+        }
+        if (barrierStr < 0) {
+            barrierStr = 0;
+        }
+        if (barrierActive) {
+            if (gotHit && (barrierStr > 0)){
+                if (rechargeTimer <= downTimer){                    
+                    downTimer = 0;
+                    gotHit = false;
+                }
+                if (downTimer < rechargeTimer){
+                    downTimer += Time.deltaTime;
+                }
+            }else if(gotHit && (barrierStr <= 0)){
+                if (3*rechargeTimer <= downTimer)
+                {
+                    downTimer = 0;
+                    gotHit = false;
+                }
+                if (downTimer < 3*rechargeTimer)
+                {
+                    downTimer += Time.deltaTime;
+                }
+            }else{
+                if (1 <= timer && barrierStr < 3) {
+                    if (barrierStr + barrierPsec > 3)
+                        barrierStr = 3;
+                    else
+                        barrierStr += barrierPsec;
+                    timer = 0;
+                }            
+                if (timer < 1) {
+                    timer += Time.deltaTime;
+                
+                }
+            }         
+        }
+        if (invul && barrierStr > 0) {
+            if (invulLen <= invulTimer)
+            {
+                invulTimer = 0;
+                invul = false;
+                GetComponent<Renderer>().enabled = true;
+            } else
+            if (invulTimer < invulLen)
+            {
+                invulTimer += Time.deltaTime;
+                GetComponent<Renderer>().enabled = false;
             }
-            if (barrierStr < 3){
-                barrierStr += barrierPsec;
-                yield return new WaitForSeconds(1);
+        } else if (invul && barrierStr <= 0) {
+            if (2*invulLen <= invulTimer)
+            {
+                invulTimer = 0;
+                invul = false;
+                GetComponent<Renderer>().enabled = true;
             }
-            else {
-                yield return null;
+            else
+            if (invulTimer < 2*invulLen)
+            {
+                invulTimer += Time.deltaTime;
+                GetComponent<Renderer>().enabled = false;
             }
         }
-    }
+	}
+
+    
+    
 
     IEnumerator Die() {
         print("D E A D T");
         deathExpl.Play();
-        StopCoroutine(BarrierRegen());
+        barrierActive = false;
         GetComponent<GunHolder>().enabled = false;
+        GetComponent<PlayerGroundMovement>().enabled = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
         yield return new WaitForSeconds(2);
@@ -69,7 +123,6 @@ public class PlayerHealth : MonoBehaviour {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().detectCollisions = false;
         deathExpl.Stop();
-
     }
 
     private void OnCollisionEnter(Collision col)
@@ -77,21 +130,36 @@ public class PlayerHealth : MonoBehaviour {
 		if (col.gameObject.layer == 11) {
 			if (barrierStr > 0) {
 				barrierStr = barrierStr - 1;
-			} else {
-				HP = HP - 1;
-				if (heart1.activeSelf == true) {
-					heart1.SetActive (false);
-				} else if (heart2.activeSelf == true) {
-					heart2.SetActive (false);
-				} else {
-					heart3.SetActive (false);
-				}
-			}            
-            print(HP);
+                gotHit = true;                
+                timer = 0;
+                downTimer = 0;                
+                if (barrierStr <= 0)
+                {
+                    barrierStr = 0;
+                }
+            } else {
+                if (!invul)
+                {
+                    HP = HP - 1;
+                    if (heart1.activeSelf == true)
+                    {
+                        heart1.SetActive(false);
+                    }
+                    else if (heart2.activeSelf == true)
+                    {
+                        heart2.SetActive(false);
+                    }
+                    else
+                    {
+                        heart3.SetActive(false);
+                    }
+                }                
+            }
+            invul = true;
+            invulTimer = 0;           
 		}if(col.gameObject.name == "BarrierPickUp"){
 			Destroy(col.gameObject);
-            barrierActive = true;
-            StartCoroutine(BarrierRegen());
+            barrierActive = true;            
             if (barrierStr < 3){
 				barrierStr = 3;
 				barrierEffect.Play ();
@@ -107,20 +175,33 @@ public class PlayerHealth : MonoBehaviour {
 		if (other.gameObject.layer == 10){
 			if (barrierStr > 0) {
 				barrierStr = barrierStr - 1;
-                gotHit = true;
-                if (barrierStr <= 0) {
+                gotHit = true;                
+                timer = 0;
+                downTimer = 0;
+                
+                if (barrierStr <= 0){
                     barrierStr = 0;
                 }
 			} else {
-				HP = HP - 1;
-				if (heart1.activeSelf == true) {
-					heart1.SetActive (false);
-				} else if (heart2.activeSelf == true) {
-					heart2.SetActive (false);
-				} else {
-					heart3.SetActive (false);
-				}
-			}
+                if (!invul)
+                {
+                    HP = HP - 1;
+                    if (heart1.activeSelf == true)
+                    {
+                        heart1.SetActive(false);
+                    }
+                    else if (heart2.activeSelf == true)
+                    {
+                        heart2.SetActive(false);
+                    }
+                    else
+                    {
+                        heart3.SetActive(false);
+                    }
+                }
+            }
+            invul = true;
+            invulTimer = 0;
         }
     }
 }
