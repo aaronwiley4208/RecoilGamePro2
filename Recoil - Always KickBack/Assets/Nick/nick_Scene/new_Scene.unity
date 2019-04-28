@@ -1955,11 +1955,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4075414791237706, guid: 6dc5d17d0d1a78143b9aeba9cbb2c8b1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 24.36
+      value: 30.33
       objectReference: {fileID: 0}
     - target: {fileID: 4075414791237706, guid: 6dc5d17d0d1a78143b9aeba9cbb2c8b1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.97
+      value: 9.95
       objectReference: {fileID: 0}
     - target: {fileID: 4075414791237706, guid: 6dc5d17d0d1a78143b9aeba9cbb2c8b1, type: 2}
       propertyPath: m_LocalPosition.z
