@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114581886638057714}
   - component: {fileID: 114726455419770648}
   - component: {fileID: 54714752584979440}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Second Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33560396126993066}
   - component: {fileID: 23253469501027252}
   - component: {fileID: 135868932127994456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

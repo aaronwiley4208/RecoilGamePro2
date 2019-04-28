@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65740306408323388}
   - component: {fileID: 114260099062878764}
   - component: {fileID: 54075871095551452}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Shotgun Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33771479355690190}
   - component: {fileID: 23563878270350608}
   - component: {fileID: 135128733145566190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

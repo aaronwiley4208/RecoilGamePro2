@@ -85,8 +85,6 @@ public class Shoot : MonoBehaviour
             obj.transform.GetComponent<Rigidbody>().AddForce((target.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);
         }
     }
-
-    
 }
 
 

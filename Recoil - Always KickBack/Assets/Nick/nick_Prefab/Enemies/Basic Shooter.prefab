@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114105859089823858}
   - component: {fileID: 114700231411824074}
   - component: {fileID: 54608961896699602}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Basic Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33854357322315946}
   - component: {fileID: 23783279726468662}
   - component: {fileID: 135653878047950244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

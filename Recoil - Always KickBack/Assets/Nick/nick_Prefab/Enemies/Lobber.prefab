@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114371663278875386}
   - component: {fileID: 114231035430974194}
   - component: {fileID: 54705025435315240}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Lobber
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33168465296616288}
   - component: {fileID: 23530357854997226}
   - component: {fileID: 135101732413747776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
