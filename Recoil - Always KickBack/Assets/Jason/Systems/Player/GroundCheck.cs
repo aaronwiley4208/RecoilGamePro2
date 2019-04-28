@@ -14,6 +14,11 @@ public class GroundCheck : MonoBehaviour {
     private float checkDistance;
     [SerializeField]
     private string groundTag = "Ground";
+    [SerializeField]
+    private int numFramesStored;
+    
+    private Vector3 lastGroundedPosition;
+    public List<Vector3> lastGroundedPositions;
 
 	
 	// Do the check 
@@ -28,5 +33,19 @@ public class GroundCheck : MonoBehaviour {
                     isGrounded = true;
             }
         }
+        // If we're still grounded after this check, set the last grounded position
+        if (isGrounded) {
+            lastGroundedPosition = transform.position;
+            lastGroundedPositions.Add(lastGroundedPosition);
+            if (lastGroundedPositions.Count > numFramesStored)
+                lastGroundedPositions.RemoveAt(0);
+        }
 	}
+
+    public Vector3 GetLastGroundedPosition() {
+        return lastGroundedPosition;
+    }
+    public Vector3 GetRecentGroundedPosition() {
+        return lastGroundedPositions[lastGroundedPositions.Count - 1];
+    }
 }
