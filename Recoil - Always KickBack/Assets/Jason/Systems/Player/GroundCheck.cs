@@ -48,4 +48,12 @@ public class GroundCheck : MonoBehaviour {
     public Vector3 GetRecentGroundedPosition() {
         return lastGroundedPositions[0];
     }
+    /// <summary>
+    /// Delete all but the least recent position
+    /// </summary>
+    public void ResetPosHistory() {
+        Vector3 pos = lastGroundedPositions[0];
+        lastGroundedPositions.Clear();
+        lastGroundedPositions.Add(pos);
+    }
 }

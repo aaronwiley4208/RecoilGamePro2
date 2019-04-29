@@ -98,6 +98,17 @@ public class GunManagement : MonoBehaviour {
                 currentGun = Guns.SNIPER; ChangeGun(Guns.SNIPER);
             }
         }
+
+        // Check for cheating getting guns
+        if (Input.GetKeyDown(KeyCode.Keypad1)) {
+            ActivateGun(Guns.PISTOL);
+        } else if (Input.GetKeyDown(KeyCode.Keypad2)) {
+            ActivateGun(Guns.SHOTGUN);
+        } else if (Input.GetKeyDown(KeyCode.Keypad3)) {
+            ActivateGun(Guns.MACHINEGUN);
+        } else if (Input.GetKeyDown(KeyCode.Keypad4)) {
+            ActivateGun(Guns.SNIPER);
+        }
     }
 
 
