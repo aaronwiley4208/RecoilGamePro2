@@ -166,13 +166,14 @@ public class PlayerHealth : MonoBehaviour {
 			}
 		}
         
+        
     }
 
     
     
     private void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.layer == 11){  //bullets layer, might change
+		if (other.gameObject.layer == 11 || other.gameObject.tag == "Teleporter"){  //bullets layer, might change
 			if (barrierStr > 0) {
 				barrierStr = barrierStr - 1;
                 gotHit = true;                
