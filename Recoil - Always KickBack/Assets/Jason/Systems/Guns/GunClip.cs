@@ -21,6 +21,8 @@ public class GunClip : MonoBehaviour {
     private ReloadInAir airReloader;
     [SerializeField]
     private Transform player;
+    [SerializeField]
+    private float timeTilGroundReload = 1;
 
     [Header("UI")]
     [SerializeField]
@@ -86,6 +88,9 @@ public class GunClip : MonoBehaviour {
                 Debug.Log("Air reload");
                 airReloader.StartReload(GunManagement.instance.currentGun); // Could replace this with Pistol's gunType
             }
+            // Start a ground reload of this gun if the player's on the ground (cause they won't be able to reload otherwise)
+            if (clipCount == 0 && groundCheck.isGrounded)
+                StartCoroutine(GroundReload());
             return true;
         } else return false;
     }
@@ -147,5 +152,13 @@ public class GunClip : MonoBehaviour {
     private void ReloadBulletUI() {
         foreach (var bullet in bullets)
             bullet.SetActive(true);
+    }
+
+    // Reloads on the ground after a few seconds. Called when the player runs out of bullets on the ground
+    IEnumerator GroundReload() {
+        yield return new WaitForSeconds(timeTilGroundReload);
+        // If the player's still out of clip, reload
+        if (clipCount == 0)
+            Reload();
     }
 }
