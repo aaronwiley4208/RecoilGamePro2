@@ -16184,11 +16184,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -62.25
+      value: -62.17
       objectReference: {fileID: 0}
     - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 19.75
+      value: 19.81
       objectReference: {fileID: 0}
     - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
       propertyPath: m_LocalPosition.z
@@ -16245,6 +16245,23 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371663278875386, guid: 7bebd5fc85338ef459200444c3790ded,
+        type: 2}
+      propertyPath: gunShot
+      value: 
+      objectReference: {fileID: 8300000, guid: da947b6b32094e34aa0b2898881b80f3, type: 3}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 114480308662204912, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
@@ -31945,11 +31962,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4874824895379042, guid: b48e9a2f6786db74584891b8f402c62d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -47.9
+      value: -72.42
       objectReference: {fileID: 0}
     - target: {fileID: 4874824895379042, guid: b48e9a2f6786db74584891b8f402c62d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 37.5
+      value: 19.27
       objectReference: {fileID: 0}
     - target: {fileID: 4874824895379042, guid: b48e9a2f6786db74584891b8f402c62d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -41804,7 +41821,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 19.75
+      value: 19.88
       objectReference: {fileID: 0}
     - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
       propertyPath: m_LocalPosition.z
@@ -41858,6 +41875,23 @@ Prefab:
       propertyPath: currentHP
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257798755913138, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371663278875386, guid: 7bebd5fc85338ef459200444c3790ded,
+        type: 2}
+      propertyPath: gunShot
+      value: 
+      objectReference: {fileID: 8300000, guid: da947b6b32094e34aa0b2898881b80f3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
   m_IsPrefabAsset: 0
@@ -46004,6 +46038,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114371663278875386, guid: 7bebd5fc85338ef459200444c3790ded,
+        type: 2}
+      propertyPath: gunShot
+      value: 
+      objectReference: {fileID: 8300000, guid: da947b6b32094e34aa0b2898881b80f3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bebd5fc85338ef459200444c3790ded, type: 2}
   m_IsPrefabAsset: 0
