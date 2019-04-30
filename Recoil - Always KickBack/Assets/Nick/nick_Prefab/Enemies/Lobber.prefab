@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114371663278875386}
   - component: {fileID: 114231035430974194}
   - component: {fileID: 54705025435315240}
+  - component: {fileID: 114009592409795506}
   m_Layer: 8
   m_Name: Lobber
   m_TagString: Enemy
@@ -188,6 +189,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114009592409795506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311310697276516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69751fdebc87d8142b4fa42f8968b2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0
+  minIntensity: 0.5
+  timePerPeriod: 2
+  intensityDampener: 3
 --- !u!114 &114231035430974194
 MonoBehaviour:
   m_ObjectHideFlags: 1
