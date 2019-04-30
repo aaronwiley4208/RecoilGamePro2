@@ -13,6 +13,10 @@ public class GunBarrel : MonoBehaviour {
     public float spreadAngle;
     [Tooltip("The number of bullets in the spread.")]
     public int bulletsPerClick;
+    [SerializeField]
+    private Transform player;
+    [SerializeField]
+    private Pistol gun;
 
 
 	// Use this for initialization
@@ -37,6 +41,14 @@ public class GunBarrel : MonoBehaviour {
 	}
 
     public void Fire(Vector3 direction) {
+        // check if we should fire a bullet. Don't want to if we're just aiming into a wall
+        RaycastHit hit;
+        Ray ray = new Ray(player.position, (transform.position - player.position).normalized);
+        if (Physics.Raycast(ray, out hit)) {
+            if (hit.distance < 1) // too close to wall
+                return;
+        }
+
         if (bulletsPerClick == 1) {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(direction));
             Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();

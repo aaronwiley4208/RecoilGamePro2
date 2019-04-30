@@ -32,9 +32,22 @@ public class GibOnDeath : MonoBehaviour {
         // Spawn gibs
         for (int i = 0; i < numGibs; i++) {
             Vector3 startPos = (Random.onUnitSphere * startingRadius) + transform.position;
-            GameObject g = Instantiate(gib, startPos, Random.rotation, transform);
+            GameObject g = Instantiate(gib, startPos, Random.rotation);
             g.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 2, upwardsForce, ForceMode.Impulse);
         } 
+    }
+
+    // Gib, but with the provided mat
+    public void Gib(Material gibMat) {
+        // Spawn gibs
+        for (int i = 0; i < numGibs; i++) {
+            Vector3 startPos = (Random.onUnitSphere * startingRadius) + transform.position;
+            GameObject g = Instantiate(gib, startPos, Random.rotation);
+            g.GetComponent<Renderer>().material = gibMat;
+            //print(g.GetComponent<Renderer>().material.color);
+            print(gibMat.color);
+            g.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 2, upwardsForce, ForceMode.Impulse);
+        }
     }
 
     // Gib, but one frame at a time

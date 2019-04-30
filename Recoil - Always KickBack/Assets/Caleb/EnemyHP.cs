@@ -15,6 +15,11 @@ public class EnemyHP : MonoBehaviour {
     Material original;
     public Material hurtColor;
 
+    [SerializeField]
+    private float startingIntensity = 1.5f;
+    [SerializeField]
+    private float currentIntensity = 0;
+
     // Use this for initialization
     void Start () {
         if (invulnPeriod == 0) 
@@ -23,6 +28,9 @@ public class EnemyHP : MonoBehaviour {
         }
         currentHP = maxHP;
         original = this.gameObject.GetComponent<Renderer>().material;
+
+        // intensity starts at 1.5
+        currentIntensity = startingIntensity;
     }
 	
 	// Update is called once per frame
@@ -31,7 +39,7 @@ public class EnemyHP : MonoBehaviour {
         {
             this.gameObject.GetComponent<Renderer>().material = original;
         }
-	}
+    }
 
     public void Damage(int dam, bool piercing)  //type denotes standard/piercing, at 0 and 1 respectively
     {
@@ -65,6 +73,8 @@ public class EnemyHP : MonoBehaviour {
                 this.gameObject.GetComponent<Renderer>().material = hurtColor;
                 canNextBeHurt = Time.time + invulnPeriod;
                 currentHP = currentHP - dam;
+                //currentIntensity = Mathf.Lerp(0, startingIntensity, ((float)currentHP / maxHP));
+                //original.SetColor("_EmissionColor", original.color * currentIntensity);
                 if (currentHP <= 0)
                 {
                     Kill();
@@ -80,7 +90,16 @@ public class EnemyHP : MonoBehaviour {
 
     public void Kill()
     {
-        //any kill effects
+        // Get the gibs
+        GibOnDeath gib = GetComponent<GibOnDeath>();
+        if (gib) {
+            gib.Gib(original);
+            print(GetComponent<Renderer>().material.color);
+        } else {
+            gib = gameObject.AddComponent<GibOnDeath>();
+            gib.Gib(GetComponent<Renderer>().material);
+        } 
+
         Destroy(this.gameObject);
     }
 }

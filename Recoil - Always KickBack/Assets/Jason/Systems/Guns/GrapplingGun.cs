@@ -76,6 +76,10 @@ public class GrapplingGun : MonoBehaviour {
             }
 
         }
+
+        // Cheats yo
+        if (Input.GetKeyDown(KeyCode.G))
+            AddHook();
 	}
 
     private void Grapple(Vector3 direction, int index) {

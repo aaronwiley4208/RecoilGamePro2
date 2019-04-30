@@ -30,7 +30,9 @@ public class CameraFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        // Immediately move to player
+        Vector3 targetPos = new Vector3(player.position.x, player.position.y, transform.position.z) + offset;
+        transform.position = targetPos;
 	}
 	
 	// Update is called once per frame

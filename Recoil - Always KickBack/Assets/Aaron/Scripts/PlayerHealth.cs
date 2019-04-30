@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
     public float HP = 3;
-	public float barrierStr = 3;
+    public float barrierStr = 3;
     public ParticleSystem deathExpl;
     public ParticleSystem barrierEffect;
-	ParticleSystem.MainModule barrierMain;
-	public GameObject heart1;
-	public GameObject heart2;
-	public GameObject heart3;
+    ParticleSystem.MainModule barrierMain;
+    public GameObject heart1;
+    public GameObject heart2;
+    public GameObject heart3;
 
     public float rechargeTimer = 3;
     public float barrierPsec = 0.1f;
+
+    public GameObject deathUI;
+
 
     bool barrierActive = false;
     bool gotHit = false;
@@ -26,89 +31,85 @@ public class PlayerHealth : MonoBehaviour {
     float invulLen = .2f;
 
     // Use this for initialization
-    void Start () {
-		barrierMain = barrierEffect.main;
-		barrierMain.startColor = Color.green;
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start() {
+        barrierMain = barrierEffect.main;
+        barrierMain.startColor = Color.green;
+
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (HP <= 0) {
             StartCoroutine(Die());
-        }        
-		if (barrierStr > 0) {
+        }
+        if (barrierStr > 0) {
             barrierEffect.Play();
-            barrierMain.startColor = Color.Lerp(Color.red, Color.green, barrierStr/3);
-		} else {
-			barrierEffect.Stop();
+            barrierMain.startColor = Color.Lerp(Color.red, Color.green, barrierStr / 3);
+        } else {
+            barrierEffect.Stop();
         }
         if (barrierStr < 0) {
             barrierStr = 0;
         }
         if (barrierActive) {
-            if (gotHit && (barrierStr > 0)){
-                if (rechargeTimer <= downTimer){                    
+            if (gotHit && (barrierStr > 0)) {
+                if (rechargeTimer <= downTimer) {
                     downTimer = 0;
                     gotHit = false;
                 }
-                if (downTimer < rechargeTimer){
+                if (downTimer < rechargeTimer) {
                     downTimer += Time.deltaTime;
                 }
-            }else if(gotHit && (barrierStr <= 0)){
-                if (3*rechargeTimer <= downTimer)
-                {
+            } else if (gotHit && (barrierStr <= 0)) {
+                if (3 * rechargeTimer <= downTimer) {
                     downTimer = 0;
                     gotHit = false;
                 }
-                if (downTimer < 3*rechargeTimer)
-                {
+                if (downTimer < 3 * rechargeTimer) {
                     downTimer += Time.deltaTime;
                 }
-            }else{
+            } else {
                 if (1 <= timer && barrierStr < 3) {
                     if (barrierStr + barrierPsec > 3)
                         barrierStr = 3;
                     else
                         barrierStr += barrierPsec;
                     timer = 0;
-                }            
+                }
                 if (timer < 1) {
                     timer += Time.deltaTime;
-                
+
                 }
-            }         
+            }
         }
         if (invul && barrierStr > 0) {
-            if (invulLen <= invulTimer)
-            {
+            if (invulLen <= invulTimer) {
                 invulTimer = 0;
                 invul = false;
                 GetComponent<Renderer>().enabled = true;
             } else
-            if (invulTimer < invulLen)
-            {
+            if (invulTimer < invulLen) {
                 invulTimer += Time.deltaTime;
                 GetComponent<Renderer>().enabled = false;
             }
         } else if (invul && barrierStr <= 0) {
-            if (2*invulLen <= invulTimer)
-            {
+            if (2 * invulLen <= invulTimer) {
                 invulTimer = 0;
                 invul = false;
                 GetComponent<Renderer>().enabled = true;
-            }
-            else
-            if (invulTimer < 2*invulLen)
-            {
+            } else
+            if (invulTimer < 2 * invulLen) {
                 invulTimer += Time.deltaTime;
                 GetComponent<Renderer>().enabled = false;
             }
         }
-	}
+        if (HP > 0) {
+            deathUI.SetActive(false);
+        }
+    }
 
-    
-    
+
+
 
     IEnumerator Die() {
         print("D E A D T");
@@ -123,7 +124,17 @@ public class PlayerHealth : MonoBehaviour {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().detectCollisions = false;
         deathExpl.Stop();
+        deathUI.SetActive(true);
     }
+
+
+
+    public void RetryButton(){
+
+        SceneManager.LoadScene("test_scene");
+
+    }
+
 
     private void OnCollisionEnter(Collision col)
     {
@@ -153,6 +164,7 @@ public class PlayerHealth : MonoBehaviour {
                     {
                         heart3.SetActive(false);
                     }
+
                 }                
             }
             invul = true;

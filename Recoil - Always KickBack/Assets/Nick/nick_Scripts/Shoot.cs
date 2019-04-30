@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public GameObject projectile;
+    public AudioClip gunShot;
     public float range = 50.0f;
     public bool isLob = false;
     public bool isDumb = false;
@@ -84,6 +85,11 @@ public class Shoot : MonoBehaviour
         {
             obj.transform.GetComponent<Rigidbody>().AddForce((target.transform.position - transform.position).normalized * bulletImpulse, ForceMode.Impulse);
         }
+        
+        if (this.gameObject.GetComponent<Renderer>().isVisible) {
+            AudioSource.PlayClipAtPoint(gunShot, transform.position);
+        }
+        
     }
 }
 
