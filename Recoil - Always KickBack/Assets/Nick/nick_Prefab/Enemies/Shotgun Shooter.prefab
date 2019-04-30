@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489473472839728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.36, y: 7.97, z: 1.0941868}
+  m_LocalPosition: {x: 18.89, y: 1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4465154443867260}
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1382607418927878, guid: 40838a9ca244a4a4b84c532ad9e9adf5, type: 2}
+  gunSound: {fileID: 8300000, guid: c8e618be398161845baeb37bd7ad18f6, type: 3}
   range: 50
   isLob: 0
   isDumb: 1
