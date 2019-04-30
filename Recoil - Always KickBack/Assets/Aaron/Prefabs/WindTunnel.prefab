@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1648788436763422
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,16 +99,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1648788436763422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.83, y: 2.56, z: -0.79}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -159.4, y: 61, z: 0}
+  m_LocalScale: {x: 2.79, y: 1.97, z: 1}
   m_Children:
   - {fileID: 4408831248683930}
   - {fileID: 4773593370689730}
   - {fileID: 4684087539652456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4684087539652456
 Transform:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721759997353412}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -13.800001, y: 0.14000034, z: -6.31}
+  m_LocalPosition: {x: -13.800001, y: 0.14000034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4664996425637378}
@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windSpeed: 250
+  wind: {fileID: 198943052250625738}
 --- !u!198 &198943052250625738
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -592,7 +593,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 5.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1143,7 +1144,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 180, z: 90}
+    m_Rotation: {x: 90, y: 180, z: 90}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1168,8 +1169,8 @@ ParticleSystem:
     randomPositionAmount: 0
     radius:
       value: 5
-      mode: 1
-      spread: 1
+      mode: 2
+      spread: 0
       speed:
         serializedVersion: 2
         minMaxState: 0

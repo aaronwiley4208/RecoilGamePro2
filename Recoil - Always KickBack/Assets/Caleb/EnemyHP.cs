@@ -17,7 +17,10 @@ public class EnemyHP : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        invulnPeriod = 1;
+        if (invulnPeriod == 0) 
+        {
+            invulnPeriod = 1;
+        }
         currentHP = maxHP;
         original = this.gameObject.GetComponent<Renderer>().material;
     }

@@ -158,7 +158,7 @@ public class GunClip : MonoBehaviour {
     IEnumerator GroundReload() {
         yield return new WaitForSeconds(timeTilGroundReload);
         // If the player's still out of clip, reload
-        if (clipCount == 0)
+        if (clipCount == 0 && groundCheck.isGrounded)
             Reload();
     }
 }

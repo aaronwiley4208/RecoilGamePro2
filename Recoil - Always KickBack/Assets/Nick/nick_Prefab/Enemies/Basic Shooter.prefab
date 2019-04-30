@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23893624714440306}
   - component: {fileID: 65814514936849820}
   - component: {fileID: 114105859089823858}
-  - component: {fileID: 114700231411824074}
   - component: {fileID: 54608961896699602}
+  - component: {fileID: 114830062314754196}
   m_Layer: 8
   m_Name: Basic Shooter
   m_TagString: Enemy
@@ -70,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1663385350889788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.07, y: 10.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -146.31, y: 72.95, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children:
   - {fileID: 4074849706273644}
   m_Father: {fileID: 0}
@@ -171,11 +171,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65814514936849820
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -206,7 +206,7 @@ MonoBehaviour:
   bulletImpulse: 10
   bulletsInMag: 3
   reloadTime: 3
---- !u!114 &114700231411824074
+--- !u!114 &114830062314754196
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,10 +214,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1663385350889788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a4ba74cb255454cbdac21f7c7fca04, type: 3}
+  m_Script: {fileID: 11500000, guid: 275539f3a403961479a46b260c6428d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  maxHP: 5
+  currentHP: 5
+  canNextBeHurt: 0
+  invulnPeriod: 0
+  isArmored: 0
+  hurtColor: {fileID: 2100000, guid: 82414a8319de524488b1a27cbde02688, type: 2}
 --- !u!135 &135653878047950244
 SphereCollider:
   m_ObjectHideFlags: 1

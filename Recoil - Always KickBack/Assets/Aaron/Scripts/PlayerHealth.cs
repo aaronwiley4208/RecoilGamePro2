@@ -127,7 +127,7 @@ public class PlayerHealth : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)
     {
-		if (col.gameObject.layer == 8) {  //enemies layer, might change
+		if (col.gameObject.layer == 8 || col.gameObject.layer == 11) {  //enemies & bullets layers, might change
 			if (barrierStr > 0) {
 				barrierStr = barrierStr - 1;
                 gotHit = true;                
