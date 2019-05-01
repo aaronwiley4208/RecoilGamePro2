@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour {
         }
         if (barrierStr > 0) {
             barrierEffect.Play();
-            barrierMain.startColor = Color.Lerp(Color.red, Color.green, barrierStr / 3);
+            barrierMain.startColor = Color.Lerp(Color.magenta, Color.blue, barrierStr / 3);
         } else {
             barrierEffect.Stop();
         }

@@ -143,7 +143,7 @@ public class GunManagement : MonoBehaviour {
         // Cycle once for each type of gun, checking for active status
         Guns nextGun = currentGun;
         for (int i = 0; i < System.Enum.GetValues(typeof(Guns)).Length; i++) {
-            nextGun = (Guns)Mathf.Repeat((float)nextGun + 1, System.Enum.GetValues(typeof(Guns)).Length);
+            nextGun = (Guns)Mathf.Repeat((float)nextGun - 1, System.Enum.GetValues(typeof(Guns)).Length);
             if (guns[nextGun].GetComponent<Pistol>().active) return (int)nextGun;
         }
         return -1;

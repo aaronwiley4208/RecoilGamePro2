@@ -67,7 +67,7 @@ public class Pistol : MonoBehaviour {
         fireTimer += Time.deltaTime;
         // Get Direction from player to gun
         Vector3 playerToGun = (player.position - transform.position).normalized;
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.Tab)) {
             Fire(playerToGun);
         } else if (Input.GetMouseButton(0) && fullAuto) {
             if (fireTimer > (1 / (float)fireRate)) {
