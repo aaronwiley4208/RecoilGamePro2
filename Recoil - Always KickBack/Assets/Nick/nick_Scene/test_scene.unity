@@ -7541,9 +7541,10 @@ GameObject:
   - component: {fileID: 387110468}
   - component: {fileID: 387110465}
   - component: {fileID: 387110469}
-  m_Layer: 0
+  - component: {fileID: 387110470}
+  m_Layer: 8
   m_Name: Flying Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7707,6 +7708,19 @@ MonoBehaviour:
   startingRadius: 0.5
   explosionForce: 5
   upwardsForce: 3
+--- !u!136 &387110470
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 387110461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: 0.000000029802322}
 --- !u!43 &389482856
 Mesh:
   m_ObjectHideFlags: 0
@@ -31001,7 +31015,8 @@ GameObject:
   - component: {fileID: 1134770035}
   - component: {fileID: 1134770034}
   - component: {fileID: 1134770039}
-  m_Layer: 0
+  - component: {fileID: 1134770040}
+  m_Layer: 8
   m_Name: Agent (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -31142,6 +31157,19 @@ MonoBehaviour:
   startingRadius: 0.5
   explosionForce: 5
   upwardsForce: 3
+--- !u!136 &1134770040
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1134770032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000003
+  m_Height: 2.0000007
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: -0.00000023841858, z: -0.0000077188015}
 --- !u!43 &1139587924
 Mesh:
   m_ObjectHideFlags: 0
@@ -32619,6 +32647,10 @@ Prefab:
         type: 2}
       propertyPath: barrierPsec
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619386551134796, guid: b48e9a2f6786db74584891b8f402c62d, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b48e9a2f6786db74584891b8f402c62d, type: 2}
@@ -50116,6 +50148,19 @@ MonoBehaviour:
   startingRadius: 0.5
   explosionForce: 5
   upwardsForce: 3
+--- !u!136 &1931694919
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931694911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.50000024
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: -0.00000020861626, z: -0.00000008940699}
 --- !u!1001 &1933849706
 Prefab:
   m_ObjectHideFlags: 0
@@ -52325,7 +52370,8 @@ GameObject:
   - component: {fileID: 2026773541}
   - component: {fileID: 2026773540}
   - component: {fileID: 2026773545}
-  m_Layer: 0
+  - component: {fileID: 2026773546}
+  m_Layer: 8
   m_Name: Agent (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -52466,6 +52512,19 @@ MonoBehaviour:
   startingRadius: 0.5
   explosionForce: 5
   upwardsForce: 3
+--- !u!136 &2026773546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026773538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000003
+  m_Height: 2.0000007
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: -0.00000014901161, z: -0.0000077188015}
 --- !u!1 &2034437829
 GameObject:
   m_ObjectHideFlags: 0
@@ -54492,6 +54551,10 @@ Prefab:
     - target: {fileID: 1096008427232384, guid: 245839e6ba22bd941bc71b19309567c1, type: 2}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096008427232384, guid: 245839e6ba22bd941bc71b19309567c1, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114636610022325932, guid: 245839e6ba22bd941bc71b19309567c1, type: 2}
