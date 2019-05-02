@@ -118,4 +118,9 @@ public class GrapplingGun : MonoBehaviour {
         numHooks++;
         hookClip.SetClipSize(numHooks);
     }
+
+    // Remove all grapples
+    public void DeGrapple() {
+        DetachGrapple(0); DetachGrapple(1);
+    }
 }

@@ -12,6 +12,8 @@ public class PlayerTeleporter : MonoBehaviour {
     [SerializeField]
     [Tooltip("How long to not let the player move.")]
     private float pauseTime;
+    [SerializeField]
+    private GrapplingGun grappler;
 
     private GroundCheck groundCheck;
     private Rigidbody rigidbody;
@@ -30,6 +32,8 @@ public class PlayerTeleporter : MonoBehaviour {
             rigidbody.MovePosition(groundCheck.GetRecentGroundedPosition() + new Vector3(0, .01f, 0));
             transform.position = groundCheck.GetRecentGroundedPosition() + new Vector3(0, 0.01f, 0);
             groundCheck.ResetPosHistory();
+            // Remove grapples to avoid constantly going in them
+            grappler.DeGrapple();
             StartCoroutine(PausePlayer());
         }
     }
